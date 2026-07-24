@@ -8,7 +8,7 @@ export default function Hero() {
         <Reveal>
           <span className="eyebrow">Portfolio / Étudiant Big Data & IA</span>
           <h1 className="hero-title">
-            Bonjour, je suis KONAN Yao
+            Bonjour, je suis Yao KONAN
             <span className="accentline">Big Data & IA — ESATIC</span>
           </h1>
           <p className="hero-sub">
@@ -46,17 +46,17 @@ export default function Hero() {
             </div>
             <div className="terminal-body">
               <span className="k">const</span> etudiant = {'{'}
-              {'\n'}  nom: <span className="s">'KONAN Yao Serge-Hilarion'</span>,
+              {'\n'}  nom: <span className="s">'KONAN Yao Serge-Hilarion Boigny'</span>,
               {'\n'}  titre: <span className="s">'Étudiant Big Data & IA'</span>,
               {'\n'}  ecole: <span className="s">'ESATIC — Master 1 BIHAR'</span>,
-              {'\n'}  localisation: <span className="s">'Yopougon, Abidjan'</span>,
+              {'\n'}  localisation: <span className="s">'Yopougon, Abidjan | Côte d'Ivoire</span>,
               {'\n'}  competences: [
               {'\n'}    <span className="s">'Python'</span>, <span className="s">'Machine Learning'</span>,{' '}
               <span className="s">'Deep Learning'</span>,
               {'\n'}    <span className="s">'Computer Vision'</span>, <span className="s">'React.js'</span>,{' '}
               <span className="s">'Node.js'</span>,
               {'\n'}    <span className="s">'Django'</span>, <span className="s">'PHP'</span>,{' '}
-              <span className="s">'PostgreSQL'</span>
+              <span className="s">'PostgreSQL'</span>, <span className="s">'MongoDB'</span>
               {'\n'}  ],
               {'\n'}  curieux: <span className="k">true</span>,
               {'\n'}  autonome: <span className="k">true</span>,

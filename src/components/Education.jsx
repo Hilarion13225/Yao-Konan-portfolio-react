@@ -78,7 +78,7 @@ export default function Education() {
         <Reveal as="span" className="eyebrow">Académique</Reveal>
         <Reveal as="h2" className="section-title">Formations</Reveal>
         <Reveal as="p" className="section-lead">
-          Mon parcours académique, de la licence au master.
+          Mon parcours académique, du BTS au Master.
         </Reveal>
         <div className="edu-grid">
           <Reveal className="side-illustration">

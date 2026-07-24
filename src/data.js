@@ -1,15 +1,15 @@
 export const profile = {
   name: 'KONAN Yao',
   fullName: 'KONAN Yao Serge-Hilarion Boigny',
-  title: 'Étudiant Big Data & IA',
+  title: 'Développeur Full Stack | Étudiant Big Data & IA',
   school: 'ESATIC — Master 1 BIHAR',
   location: 'Yopougon, Abidjan',
   email: 'hilarion.konan2024@esatic.edu.ci',
-  whatsapp: 'https://wa.me/22505942624',
-  phone: '+225 05 94 26 24 22',
-  linkedin: '#',
-  cv: 'https://yao-konan-portfolio.vercel.app/cv-konan-yao.pdf',
-  photo: 'https://yao-konan-portfolio.vercel.app/images/profile.png',
+  whatsapp: 'https://wa.me/2250594262422',
+  phone: '+225 05 94 26 24 22 | 07 67 55 76 71',
+  linkedin: 'https://linkedin.com/in/konan-yao-serge/',
+  photo: '/images/profile1.png',
+  cv: '/cv-konan-yao.pdf',
 }
 
 export const navLinks = [
@@ -23,11 +23,11 @@ export const navLinks = [
 
 export const experiences = [
   {
-    date: '2025',
-    title: 'Stagiaire — Gestion du parrainage électoral',
-    org: 'Commission Électorale Indépendante (CEI) — Abidjan',
+    date: 'Décembre 2024 - Octobre 2025',
+    title: 'Développeur full stack',
+    org: 'Commission Electorale Indépendante (CEI), Angré 7e Tranche, Cocody, Abidjan',
     description:
-      "Développement d'une application web pour la gestion du parrainage électoral, alliant performance, sécurité et accessibilité (Next.js, Tailwind CSS, Laravel, PostgreSQL).",
+      "Analyse des besoins et développement d'une application web de gestion du parrainage électoral. Conception et implémentation du backend avec Laravel et de l'API REST associée. Développement de l'interface utilisateur avec Next.js (React). Intégration et gestion de la base de données PostgreSQL. Mise en place de l'authentification, de la gestion des rôles et de la consommation d'API REST. Rédaction et exécution des tests des endpoints API avec Postman.",
   },
   {
     date: '2025',
@@ -36,22 +36,42 @@ export const experiences = [
     description:
       "1er place pour le développement d'un système de recyclage intelligent de l'eau rejetée, réutilisable pour l'agriculture ou purifiée pour la consommation humaine (Python, Django, MongoDB, microcontrôleurs ESP32).",
   },
+  {
+    date: 'Janvier 2023 - Novembre 2023',
+    title: 'Développeur web',
+    org: 'GLOBAL CROA, Riviera Bonoumin Laurier 7, Abidjan',
+    description:
+      "Création d'un site vitrine avec Odoo pour la présentation de l'entreprise et de ses produits.",
+  },
+  {
+    date: 'Octobre 2022 - Décembre 2022',
+    title: 'Développeur web',
+    org: 'Laboratoire des Technologies de l\'Information et de la Télécommunication (LABTIC), Cocody Saint Jean/Abidjan',
+    description:
+      "Conception et développement du backend (Laravel) et du frontend (Laravel Blade) d'une application de gestion des activités. Intégration, modélisation et gestion de la base de données MySQL.",
+  },
 ]
 
 export const education = [
   {
-    date: 'Septembre 2025 — Présent',
-    title: 'Master 1 Big Data & Intelligence Artificielle (BIHAR)',
-    org: 'ESATIC',
+    date: 'Novembre 2025 — Présent',
+    title: 'Master Big Data Intelligence for Human Augmented Reality (BIHAR)',
+    org: 'ESATIC, Treichville/Abidjan',
     description:
       "Formation spécialisée en Big Data et Intelligence Artificielle. Exploration de l'analyse prédictive, du traitement de la donnée et des systèmes intelligents.",
   },
   {
-    date: '2022 — 2024',
-    title: "Licence DASI (Développement d'Applications et Systèmes d'Information)",
-    org: 'ESATIC',
+    date: 'Décembre 2023 — Octobre 2024',
+    title: "Licence Développement d'Applications et Systèmes d'Information (DASI)",
+    org: 'ESATIC, Treichville/Abidjan — Mention Bien',
     description:
       "Bases solides en développement logiciel, conception d'applications et administration de bases de données.",
+  },
+  {
+    date: 'Octobre 2020 — Septembre 2022',
+    title: "BTS (Brevet de Technicien Supérieur) Informatique & Développeur d'Application",
+    org: 'PIGIER Côte d\'Ivoire, Plateau/Abidjan',
+    description: '',
   },
 ]
 
@@ -83,7 +103,7 @@ export const projects = [
     description:
       "Application de gestion du parrainage électoral développée en stage à la Commission Électorale Indépendante (CEI), alliant performance, sécurité et accessibilité.",
     tags: ['#Next.js', '#Tailwind CSS', '#Laravel', '#PostgreSQL'],
-    thumb: null, // mettez une URL d'image ici quand vous en avez une, ex: '/images/parrainage.png'
+    thumb: '/images/parrainage.png', // mettez une URL d'image ici quand vous en avez une, ex: '/images/parrainage.png'
     link: '#contact',
   },
   {
@@ -93,6 +113,23 @@ export const projects = [
       "Système connecté combinant interactivité, communication en temps réel et UX moderne — 🏆 1er place au Technovore Hackathon 2025.",
     tags: ['#Python', '#Django', '#MongoDB', '#ESP32'],
     thumb: null,
+    link: '#contact',
+  },
+  {
+    role: 'Développeur Full-Stack & IA',
+    title: 'SmartRecruit — Plateforme de recrutement assistée par IA',
+    description:
+      "Analyse de CV, scoring sémantique et classement automatique des candidats.",
+    tags: ['#IA', '#NLP', '#React', '#Next.js'],
+    thumb: '/images/recruit.png',
+    link: 'https://smartrecruit-gamma.vercel.app/',
+  },{
+    role: 'Développeur Full-Stack & Machine Learning',
+    title: 'Prédiction de Salaire (Django + React)',
+    description:
+      "Application web prédisant un salaire à partir des années d'expérience, via un modèle de régression linéaire (scikit-learn) exposé par une API Django et consommé par une interface React. Projet réalisé en binôme avec KOUAME Romeo.",
+    tags: ['#Django', '#React', '#Machine Learning', '#Scikit-learn'],
+    thumb: '/images/prediction.png',
     link: '#contact',
   },
 ]
