@@ -1,5 +1,6 @@
 import Reveal from './Reveal.jsx'
 import { education } from '../data.js'
+import { useLanguage } from '../i18n/LanguageContext.jsx'
 
 function GraduationIllustration() {
   return (
@@ -72,13 +73,15 @@ function GraduationIllustration() {
 }
 
 export default function Education() {
+  const { lang, t } = useLanguage()
+
   return (
     <section className="section" id="education">
       <div className="container">
-        <Reveal as="span" className="eyebrow">Académique</Reveal>
-        <Reveal as="h2" className="section-title">Formations</Reveal>
+        <Reveal as="span" className="eyebrow">{t.education.eyebrow}</Reveal>
+        <Reveal as="h2" className="section-title">{t.education.title}</Reveal>
         <Reveal as="p" className="section-lead">
-          Mon parcours académique, du BTS au Master.
+          {t.education.lead}
         </Reveal>
         <div className="edu-grid">
           <Reveal className="side-illustration">
@@ -90,10 +93,10 @@ export default function Education() {
           <div className="timeline">
             {education.map((item, i) => (
               <Reveal key={i} className="timeline-item">
-                <span className="timeline-date">{item.date}</span>
-                <h3>{item.title}</h3>
+                <span className="timeline-date">{item.date[lang]}</span>
+                <h3>{item.title[lang]}</h3>
                 <p className="org">{item.org}</p>
-                <p>{item.description}</p>
+                <p>{item.description[lang]}</p>
               </Reveal>
             ))}
           </div>

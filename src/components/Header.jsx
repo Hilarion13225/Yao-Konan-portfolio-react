@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import { navLinks } from '../data.js'
+import { useLanguage } from '../i18n/LanguageContext.jsx'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState('')
+  const { lang, toggleLang, t } = useLanguage()
 
   useEffect(() => {
     function onScroll() {
@@ -30,12 +32,25 @@ export default function Header() {
           <span className="brand-badge">KY</span>
           <span className="brand-text">
             KONAN Yao
-            <small>Étudiant Big Data & IA</small>
+            <small>{t.hero.role}</small>
           </span>
         </a>
-        <button className="mobile-toggle" onClick={() => setOpen((o) => !o)} aria-label="Menu">
-          <i className="fas fa-bars"></i>
-        </button>
+
+        <div className="header-actions">
+          <button
+            className="lang-toggle"
+            onClick={toggleLang}
+            aria-label="Changer de langue / Switch language"
+          >
+            <span className={`lang-option ${lang === 'fr' ? 'active' : ''}`}>FR</span>
+            <span className="lang-sep">/</span>
+            <span className={`lang-option ${lang === 'en' ? 'active' : ''}`}>EN</span>
+          </button>
+          <button className="mobile-toggle" onClick={() => setOpen((o) => !o)} aria-label="Menu">
+            <i className="fas fa-bars"></i>
+          </button>
+        </div>
+
         <nav>
           <ul className={`nav-list ${open ? 'open' : ''}`}>
             {navLinks.map((link) => (
@@ -45,7 +60,7 @@ export default function Header() {
                   className={`nav-link ${active === link.href.slice(1) ? 'active' : ''}`}
                   onClick={() => setOpen(false)}
                 >
-                  {link.label}
+                  {t.nav[link.key]}
                 </a>
               </li>
             ))}

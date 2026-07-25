@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import Reveal from './Reveal.jsx'
 import { profile } from '../data.js'
+import { useLanguage } from '../i18n/LanguageContext.jsx'
 
 export default function Contact() {
+  const { t } = useLanguage()
   const [form, setForm] = useState({ name: '', email: '', message: '' })
 
   function handleChange(e) {
@@ -17,17 +19,17 @@ export default function Contact() {
       const body = encodeURIComponent(`${message} (${email})`)
       window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`
     } else {
-      alert('Merci de remplir tous les champs.')
+      alert(t.contact.alertFillAll)
     }
   }
 
   return (
     <section className="section" id="contact" style={{ background: 'var(--bg-alt)' }}>
       <div className="container">
-        <Reveal as="span" className="eyebrow">Travaillons ensemble</Reveal>
-        <Reveal as="h2" className="section-title">Contact</Reveal>
+        <Reveal as="span" className="eyebrow">{t.contact.eyebrow}</Reveal>
+        <Reveal as="h2" className="section-title">{t.contact.title}</Reveal>
         <Reveal as="p" className="section-lead">
-          Une question, une opportunité de stage ou un projet à concrétiser ? Écrivez-moi, je réponds avec plaisir.
+          {t.contact.lead}
         </Reveal>
         <div className="contact-grid">
           <Reveal>
@@ -35,22 +37,22 @@ export default function Contact() {
               <div className="contact-info-item">
                 <i className="fas fa-envelope"></i>
                 <div>
-                  <h4>Email</h4>
+                  <h4>{t.contact.email}</h4>
                   <p>{profile.email}</p>
                 </div>
               </div>
               <div className="contact-info-item">
                 <i className="fas fa-phone-alt"></i>
                 <div>
-                  <h4>Téléphone</h4>
+                  <h4>{t.contact.phone}</h4>
                   <p>{profile.phone}</p>
                 </div>
               </div>
               <div className="contact-info-item">
                 <i className="fas fa-map-marker-alt"></i>
                 <div>
-                  <h4>Localisation</h4>
-                  <p>{profile.location}, Côte d'Ivoire</p>
+                  <h4>{t.contact.location}</h4>
+                  <p>{profile.location}, {t.contact.country}</p>
                 </div>
               </div>
             </div>
@@ -73,7 +75,7 @@ export default function Contact() {
                 type="text"
                 name="name"
                 className="form-control"
-                placeholder="Votre nom"
+                placeholder={t.contact.formName}
                 value={form.name}
                 onChange={handleChange}
               />
@@ -83,7 +85,7 @@ export default function Contact() {
                 type="email"
                 name="email"
                 className="form-control"
-                placeholder="Votre email"
+                placeholder={t.contact.formEmail}
                 value={form.email}
                 onChange={handleChange}
               />
@@ -92,13 +94,13 @@ export default function Contact() {
               <textarea
                 name="message"
                 className="form-control"
-                placeholder="Votre message"
+                placeholder={t.contact.formMessage}
                 value={form.message}
                 onChange={handleChange}
               ></textarea>
             </div>
             <button type="submit" className="btn btn-primary">
-              Envoyer le message <i className="fas fa-paper-plane"></i>
+              {t.contact.formSubmit} <i className="fas fa-paper-plane"></i>
             </button>
           </Reveal>
         </div>

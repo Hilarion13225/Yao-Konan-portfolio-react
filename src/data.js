@@ -1,7 +1,10 @@
 export const profile = {
   name: 'KONAN Yao',
   fullName: 'KONAN Yao Serge-Hilarion Boigny',
-  title: 'Développeur Full Stack | Étudiant Big Data & IA',
+  title: {
+    fr: 'Développeur Full Stack | Étudiant Big Data & IA',
+    en: 'Full Stack Developer | Big Data & AI Student',
+  },
   school: 'ESATIC — Master 1 BIHAR',
   location: 'Yopougon, Abidjan',
   email: 'hilarion.konan2024@esatic.edu.ci',
@@ -13,65 +16,110 @@ export const profile = {
 }
 
 export const navLinks = [
-  { href: '#about', label: 'À propos' },
-  { href: '#experience', label: 'Expériences' },
-  { href: '#skills', label: 'Compétences' },
-  { href: '#projects', label: 'Projets' },
-  { href: '#education', label: 'Formations' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#about', key: 'about' },
+  { href: '#experience', key: 'experience' },
+  { href: '#skills', key: 'skills' },
+  { href: '#projects', key: 'projects' },
+  { href: '#education', key: 'education' },
+  { href: '#contact', key: 'contact' },
 ]
 
 export const experiences = [
   {
-    date: 'Décembre 2024 - Octobre 2025',
-    title: 'Développeur full stack',
+    date: {
+      fr: 'Décembre 2024 - Octobre 2025',
+      en: 'December 2024 - October 2025',
+    },
+    title: {
+      fr: 'Développeur full stack',
+      en: 'Full-Stack Developer',
+    },
     org: 'Commission Electorale Indépendante (CEI), Angré 7e Tranche, Cocody, Abidjan',
-    description:
-      "Analyse des besoins et développement d'une application web de gestion du parrainage électoral. Conception et implémentation du backend avec Laravel et de l'API REST associée. Développement de l'interface utilisateur avec Next.js (React). Intégration et gestion de la base de données PostgreSQL. Mise en place de l'authentification, de la gestion des rôles et de la consommation d'API REST. Rédaction et exécution des tests des endpoints API avec Postman.",
+    description: {
+      fr: "Analyse des besoins et développement d'une application web de gestion du parrainage électoral. Conception et implémentation du backend avec Laravel et de l'API REST associée. Développement de l'interface utilisateur avec Next.js (React). Intégration et gestion de la base de données PostgreSQL. Mise en place de l'authentification, de la gestion des rôles et de la consommation d'API REST. Rédaction et exécution des tests des endpoints API avec Postman.",
+      en: "Requirements analysis and development of a web application for managing electoral sponsorship. Design and implementation of the backend with Laravel and its associated REST API. Development of the user interface with Next.js (React). Integration and management of the PostgreSQL database. Setup of authentication, role management, and REST API consumption. Writing and running API endpoint tests with Postman.",
+    },
   },
   {
-    date: '2025',
-    title: 'Lauréat — Technovore Hackathon, Niveau 2 Développement',
+    date: { fr: '2025', en: '2025' },
+    title: {
+      fr: 'Lauréat — Technovore Hackathon, Niveau 2 Développement',
+      en: 'Winner — Technovore Hackathon, Level 2 Development',
+    },
     org: 'ESATIC — Treichville, Abidjan',
-    description:
-      "1er place pour le développement d'un système de recyclage intelligent de l'eau rejetée, réutilisable pour l'agriculture ou purifiée pour la consommation humaine (Python, Django, MongoDB, microcontrôleurs ESP32).",
+    description: {
+      fr: "1er place pour le développement d'un système de recyclage intelligent de l'eau rejetée, réutilisable pour l'agriculture ou purifiée pour la consommation humaine (Python, Django, MongoDB, microcontrôleurs ESP32).",
+      en: "1st place for developing a smart wastewater recycling system, reusable for agriculture or purified for human consumption (Python, Django, MongoDB, ESP32 microcontrollers).",
+    },
   },
   {
-    date: 'Janvier 2023 - Novembre 2023',
-    title: 'Développeur web',
+    date: {
+      fr: 'Janvier 2023 - Novembre 2023',
+      en: 'January 2023 - November 2023',
+    },
+    title: { fr: 'Développeur web', en: 'Web Developer' },
     org: 'GLOBAL CROA, Riviera Bonoumin Laurier 7, Abidjan',
-    description:
-      "Création d'un site vitrine avec Odoo pour la présentation de l'entreprise et de ses produits.",
+    description: {
+      fr: "Création d'un site vitrine avec Odoo pour la présentation de l'entreprise et de ses produits.",
+      en: "Creation of a showcase website using Odoo to present the company and its products.",
+    },
   },
   {
-    date: 'Octobre 2022 - Décembre 2022',
-    title: 'Développeur web',
-    org: 'Laboratoire des Technologies de l\'Information et de la Télécommunication (LABTIC), Cocody Saint Jean/Abidjan',
-    description:
-      "Conception et développement du backend (Laravel) et du frontend (Laravel Blade) d'une application de gestion des activités. Intégration, modélisation et gestion de la base de données MySQL.",
+    date: {
+      fr: 'Octobre 2022 - Décembre 2022',
+      en: 'October 2022 - December 2022',
+    },
+    title: { fr: 'Développeur web', en: 'Web Developer' },
+    org: "Laboratoire des Technologies de l'Information et de la Télécommunication (LABTIC), Cocody Saint Jean/Abidjan",
+    description: {
+      fr: "Conception et développement du backend (Laravel) et du frontend (Laravel Blade) d'une application de gestion des activités. Intégration, modélisation et gestion de la base de données MySQL.",
+      en: "Design and development of the backend (Laravel) and frontend (Laravel Blade) of an activity management application. Integration, modeling, and management of the MySQL database.",
+    },
   },
 ]
 
 export const education = [
   {
-    date: 'Novembre 2025 — Présent',
-    title: 'Master Big Data Intelligence for Human Augmented Reality (BIHAR)',
+    date: {
+      fr: 'Novembre 2025 — Présent',
+      en: 'November 2025 — Present',
+    },
+    title: {
+      fr: 'Master Big Data Intelligence for Human Augmented Reality (BIHAR)',
+      en: 'Master Big Data Intelligence for Human Augmented Reality (BIHAR)',
+    },
     org: 'ESATIC, Treichville/Abidjan',
-    description:
-      "Formation spécialisée en Big Data et Intelligence Artificielle. Exploration de l'analyse prédictive, du traitement de la donnée et des systèmes intelligents.",
+    description: {
+      fr: "Formation spécialisée en Big Data et Intelligence Artificielle. Exploration de l'analyse prédictive, du traitement de la donnée et des systèmes intelligents.",
+      en: "Specialized training in Big Data and Artificial Intelligence. Exploring predictive analytics, data processing, and intelligent systems.",
+    },
   },
   {
-    date: 'Décembre 2023 — Octobre 2024',
-    title: "Licence Développement d'Applications et Systèmes d'Information (DASI)",
+    date: {
+      fr: 'Décembre 2023 — Octobre 2024',
+      en: 'December 2023 — October 2024',
+    },
+    title: {
+      fr: "Licence Développement d'Applications et Systèmes d'Information (DASI)",
+      en: "Bachelor's Degree in Application Development and Information Systems (DASI)",
+    },
     org: 'ESATIC, Treichville/Abidjan — Mention Bien',
-    description:
-      "Bases solides en développement logiciel, conception d'applications et administration de bases de données.",
+    description: {
+      fr: "Bases solides en développement logiciel, conception d'applications et administration de bases de données.",
+      en: "Solid foundation in software development, application design, and database administration.",
+    },
   },
   {
-    date: 'Octobre 2020 — Septembre 2022',
-    title: "BTS (Brevet de Technicien Supérieur) Informatique & Développeur d'Application",
-    org: 'PIGIER Côte d\'Ivoire, Plateau/Abidjan',
-    description: '',
+    date: {
+      fr: 'Octobre 2020 — Septembre 2022',
+      en: 'October 2020 — September 2022',
+    },
+    title: {
+      fr: "BTS (Brevet de Technicien Supérieur) Informatique & Développeur d'Application",
+      en: 'BTS (Higher Technician Certificate) in Computer Science & Application Development',
+    },
+    org: "PIGIER Côte d'Ivoire, Plateau/Abidjan",
+    description: { fr: '', en: '' },
   },
 ]
 
@@ -98,36 +146,69 @@ export const skillsRow2 = [
 
 export const projects = [
   {
-    role: 'Développeur Full-Stack',
-    title: 'Parrainage Électoral Numérique',
-    description:
-      "Application de gestion du parrainage électoral développée en stage à la Commission Électorale Indépendante (CEI), alliant performance, sécurité et accessibilité.",
+    role: {
+      fr: 'Développeur Full-Stack',
+      en: 'Full-Stack Developer',
+    },
+    title: {
+      fr: 'Parrainage Électoral Numérique',
+      en: 'Digital Electoral Sponsorship Platform',
+    },
+    description: {
+      fr: "Application de gestion du parrainage électoral développée en stage à la Commission Électorale Indépendante (CEI), alliant performance, sécurité et accessibilité.",
+      en: "Electoral sponsorship management application developed during an internship at the Independent Electoral Commission (CEI), combining performance, security, and accessibility.",
+    },
     tags: ['#Next.js', '#Tailwind CSS', '#Laravel', '#PostgreSQL'],
-    thumb: '/images/parrainage.png', // mettez une URL d'image ici quand vous en avez une, ex: '/images/parrainage.png'
+    thumb: '/images/parrainage.png',
     link: '#contact',
   },
   {
-    role: 'Développeur IoT & Backend',
-    title: "Recyclage Intelligent de l'Eau",
-    description:
-      "Système connecté combinant interactivité, communication en temps réel et UX moderne — 🏆 1er place au Technovore Hackathon 2025.",
+    role: {
+      fr: 'Développeur IoT & Backend',
+      en: 'IoT & Backend Developer',
+    },
+    title: {
+      fr: "Recyclage Intelligent de l'Eau",
+      en: 'Smart Water Recycling System',
+    },
+    description: {
+      fr: "Système connecté combinant interactivité, communication en temps réel et UX moderne — 🏆 1er place au Technovore Hackathon 2025.",
+      en: "Connected system combining interactivity, real-time communication, and modern UX — 🏆 1st place at the Technovore Hackathon 2025.",
+    },
     tags: ['#Python', '#Django', '#MongoDB', '#ESP32'],
     thumb: null,
     link: '#contact',
   },
   {
-    role: 'Développeur Full-Stack & IA',
-    title: 'SmartRecruit — Plateforme de recrutement assistée par IA',
-    description:
-      "Analyse de CV, scoring sémantique et classement automatique des candidats.",
+    role: {
+      fr: 'Développeur Full-Stack & IA',
+      en: 'Full-Stack & AI Developer',
+    },
+    title: {
+      fr: 'SmartRecruit — Plateforme de recrutement assistée par IA',
+      en: 'SmartRecruit — AI-Assisted Recruitment Platform',
+    },
+    description: {
+      fr: "Analyse de CV, scoring sémantique et classement automatique des candidats.",
+      en: "Resume analysis, semantic scoring, and automatic candidate ranking.",
+    },
     tags: ['#IA', '#NLP', '#React', '#Next.js'],
     thumb: '/images/recruit.png',
     link: 'https://smartrecruit-gamma.vercel.app/',
-  },{
-    role: 'Développeur Full-Stack & Machine Learning',
-    title: 'Prédiction de Salaire (Django + React)',
-    description:
-      "Application web prédisant un salaire à partir des années d'expérience, via un modèle de régression linéaire (scikit-learn) exposé par une API Django et consommé par une interface React. Projet réalisé en binôme avec KOUAME Romeo.",
+  },
+  {
+    role: {
+      fr: 'Développeur Full-Stack & Machine Learning',
+      en: 'Full-Stack & Machine Learning Developer',
+    },
+    title: {
+      fr: 'Prédiction de Salaire (Django + React)',
+      en: 'Salary Prediction (Django + React)',
+    },
+    description: {
+      fr: "Application web prédisant un salaire à partir des années d'expérience, via un modèle de régression linéaire (scikit-learn) exposé par une API Django et consommé par une interface React. Projet réalisé en binôme avec KOUAME Romeo.",
+      en: "Web application predicting a salary based on years of experience, using a linear regression model (scikit-learn) exposed through a Django API and consumed by a React interface. Project built in pair with KOUAME Romeo.",
+    },
     tags: ['#Django', '#React', '#Machine Learning', '#Scikit-learn'],
     thumb: '/images/prediction.png',
     link: '#contact',

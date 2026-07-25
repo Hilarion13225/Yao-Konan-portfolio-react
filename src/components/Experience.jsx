@@ -1,5 +1,6 @@
 import Reveal from './Reveal.jsx'
 import { experiences } from '../data.js'
+import { useLanguage } from '../i18n/LanguageContext.jsx'
 
 function CodingIllustration() {
   return (
@@ -31,22 +32,24 @@ function CodingIllustration() {
 }
 
 export default function Experience() {
+  const { lang, t } = useLanguage()
+
   return (
     <section className="section" id="experience" style={{ background: 'var(--bg-alt)' }}>
       <div className="container">
-        <Reveal as="span" className="eyebrow">Parcours professionnel</Reveal>
-        <Reveal as="h2" className="section-title">Expériences</Reveal>
+        <Reveal as="span" className="eyebrow">{t.experience.eyebrow}</Reveal>
+        <Reveal as="h2" className="section-title">{t.experience.title}</Reveal>
         <Reveal as="p" className="section-lead">
-          Mes expériences de terrain, entre stage et compétition technologique.
+          {t.experience.lead}
         </Reveal>
         <div className="exp-grid">
           <div className="timeline">
             {experiences.map((item, i) => (
               <Reveal key={i} className="timeline-item">
-                <span className="timeline-date">{item.date}</span>
-                <h3>{item.title}</h3>
+                <span className="timeline-date">{item.date[lang]}</span>
+                <h3>{item.title[lang]}</h3>
                 <p className="org">{item.org}</p>
-                <p>{item.description}</p>
+                <p>{item.description[lang]}</p>
               </Reveal>
             ))}
           </div>

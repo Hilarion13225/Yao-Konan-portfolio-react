@@ -1,5 +1,6 @@
 import Reveal from './Reveal.jsx'
 import { skillsRow1, skillsRow2 } from '../data.js'
+import { useLanguage } from '../i18n/LanguageContext.jsx'
 
 function SkillCard({ item }) {
   return (
@@ -31,13 +32,14 @@ function MarqueeRow({ items, reverse }) {
 }
 
 export default function Skills() {
+  const { t } = useLanguage()
   return (
     <section className="section" id="skills">
       <div className="container">
-        <Reveal as="span" className="eyebrow">Boîte à outils</Reveal>
-        <Reveal as="h2" className="section-title">Compétences</Reveal>
+        <Reveal as="span" className="eyebrow">{t.skills.eyebrow}</Reveal>
+        <Reveal as="h2" className="section-title">{t.skills.title}</Reveal>
         <Reveal as="p" className="section-lead">
-          Des compétences complémentaires entre intelligence artificielle et développement web & logiciel.
+          {t.skills.lead}
         </Reveal>
         <div className="skills-marquee">
           <MarqueeRow items={skillsRow1} />
