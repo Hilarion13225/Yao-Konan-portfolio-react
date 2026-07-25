@@ -1,3 +1,4 @@
+import { useRef, useState } from 'react'
 import Reveal from './Reveal.jsx'
 import { skillsRow1, skillsRow2 } from '../data.js'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
@@ -20,8 +21,41 @@ function SkillCard({ item }) {
 function MarqueeRow({ items, reverse }) {
   // Les items sont doublés pour un défilement en boucle infinie transparent
   const doubled = [...items, ...items]
+  const rowRef = useRef(null) // .marquee-row : c'est LUI le vrai conteneur défilant (overflow-x:auto)
+  const [paused, setPaused] = useState(false)
+  const drag = useRef({ active: false, startX: 0, startScroll: 0 })
+
+  function onPointerDown(e) {
+    const row = rowRef.current
+    if (!row) return
+    drag.current = { active: true, startX: e.clientX, startScroll: row.scrollLeft }
+    setPaused(true)
+    row.setPointerCapture?.(e.pointerId)
+  }
+
+  function onPointerMove(e) {
+    if (!drag.current.active) return
+    const row = rowRef.current
+    if (!row) return
+    const dx = e.clientX - drag.current.startX
+    row.scrollLeft = drag.current.startScroll - dx
+  }
+
+  function endDrag() {
+    drag.current.active = false
+    setPaused(false)
+  }
+
   return (
-    <div className={`marquee-row ${reverse ? 'reverse' : ''} reveal active`}>
+    <div
+      ref={rowRef}
+      className={`marquee-row ${reverse ? 'reverse' : ''} ${paused ? 'paused' : ''} reveal active`}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={endDrag}
+      onPointerLeave={endDrag}
+      onPointerCancel={endDrag}
+    >
       <div className="marquee-track">
         {doubled.map((item, i) => (
           <SkillCard key={i} item={item} />
