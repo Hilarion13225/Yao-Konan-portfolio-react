@@ -213,4 +213,21 @@ export const projects = [
     thumb: '/images/prediction.png',
     link: '#contact',
   },
+  {
+    role: {
+      fr: 'Développeur Full-Stack',
+      en: 'Full-Stack Developer',
+    },
+    title: {
+      fr: 'TourismChain CI — Plateforme Digitale du Tourisme Ivoirien',
+      en: 'TourismChain CI — Ivorian Tourism Digital Platform',
+    },
+    description: {
+      fr: "Plateforme centralisant l'offre touristique de Côte d'Ivoire (sites, circuits, événements, artisanat, hébergements, restauration) pour 8 profils d'acteurs différents. Réalisée lors du Hackathon ESATIC TECHTITANS — Technovore Hackathon 2026. Authentification JWT, certification blockchain des billets et produits (mode on-chain/offchain), dashboards analytics par rôle, et assistant conversationnel intégré pour guider les touristes.",
+      en: "Platform centralizing Côte d'Ivoire's tourism offering (sites, tours, events, crafts, accommodations, dining) for 8 different actor profiles. Built during the ESATIC TECHTITANS Hackathon — Technovore Hackathon 2026. JWT authentication, blockchain certification for tickets and products (on-chain/offchain mode), role-based analytics dashboards, and an integrated chatbot assistant to guide tourists.",
+    },
+    tags: ['#Next.js', '#TypeScript', '#Prisma', '#PostgreSQL', '#Blockchain', '#Chatbot'],
+    thumb: '/images/tourism.png',
+    link: 'https://tourim-chain.vercel.app/',
+  },
 ]
