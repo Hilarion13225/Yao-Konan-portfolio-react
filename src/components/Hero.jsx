@@ -50,7 +50,7 @@ export default function Hero() {
                 {'\n'}  nom: <span className="s">'KONAN Yao Serge-Hilarion Boigny'</span>,
                 {'\n'}  titre: <span className="s">'Étudiant Big Data & IA'</span>,
                 {'\n'}  ecole: <span className="s">'ESATIC — Master 1 BIHAR'</span>,
-                {'\n'}  localisation: <span className="s">'Yopougon, Abidjan | Côte d\u2019Ivoire'</span>,
+                {'\n'}  localisation: <span className="s">'Yopougon, Abidjan | Côte d'Ivoire'</span>,
                 {'\n'}  competences: [
                 {'\n'}    <span className="s">'Python'</span>, <span className="s">'Machine Learning'</span>,{' '}
                 <span className="s">'Deep Learning'</span>,
