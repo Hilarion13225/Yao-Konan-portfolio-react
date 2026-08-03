@@ -230,4 +230,21 @@ export const projects = [
     thumb: '/images/tourism.png',
     link: 'https://tourim-chain.vercel.app/',
   },
+  {
+    role: {
+      fr: 'Développeur Full-Stack & IA',
+      en: 'Full-Stack & AI Developer',
+    },
+    title: {
+      fr: 'Chatbot IA Conversationnel',
+      en: 'AI Conversational Chatbot',
+    },
+    description: {
+      fr: "Assistant conversationnel développé avec Django et Django REST Framework, intégrant les modèles Gemini et OpenAI pour des réponses en langage naturel, avec un moteur NLP local (TF-IDF, scikit-learn) et une recherche web en temps réel. Déployé en production sur Render.",
+      en: "Conversational assistant built with Django and Django REST Framework, integrating Gemini and OpenAI models for natural language responses, with a local NLP engine (TF-IDF, scikit-learn) and real-time web search. Deployed to production on Render.",
+    },
+    tags: ['#Django', '#DRF', '#Gemini', '#OpenAI', '#Scikit-learn'],
+    thumb: '/images/chatbot.png',
+    link: 'https://chatbot-project-vssz.onrender.com/api',
+  },
 ]
