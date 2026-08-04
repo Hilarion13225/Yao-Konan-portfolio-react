@@ -1,9 +1,17 @@
+import { useState } from 'react'
 import Reveal from './Reveal.jsx'
 import { projects } from '../data.js'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 
+// Nombre de projets visibles avant de cliquer sur "Voir plus"
+const VISIBLE_COUNT = 3
+
 export default function Projects() {
   const { lang, t } = useLanguage()
+  const [showAll, setShowAll] = useState(false)
+
+  const visibleProjects = showAll ? projects : projects.slice(0, VISIBLE_COUNT)
+  const hasMore = projects.length > VISIBLE_COUNT
 
   return (
     <section className="section" id="projects" style={{ background: 'var(--bg-alt)' }}>
@@ -14,7 +22,7 @@ export default function Projects() {
           {t.projects.lead}
         </Reveal>
         <div className="projects-grid">
-          {projects.map((project, i) => (
+          {visibleProjects.map((project, i) => (
             <Reveal key={i} className="project-card">
               {project.thumb && (
                 <div className="project-thumb">
@@ -39,14 +47,32 @@ export default function Projects() {
             </Reveal>
           ))}
 
-          <Reveal className="project-card placeholder">
-            <div className="project-body">
-              <i className="fas fa-plus"></i>
-              <h3>{t.projects.nextTitle}</h3>
-              <p>{t.projects.nextText}</p>
-            </div>
-          </Reveal>
+          {(!hasMore || showAll) && (
+            <Reveal className="project-card placeholder">
+              <div className="project-body">
+                <i className="fas fa-plus"></i>
+                <h3>{t.projects.nextTitle}</h3>
+                <p>{t.projects.nextText}</p>
+              </div>
+            </Reveal>
+          )}
         </div>
+
+        {hasMore && (
+          <div className="projects-toggle">
+            <button
+              type="button"
+              className={`projects-toggle-btn ${showAll ? 'is-open' : ''}`}
+              onClick={() => setShowAll((v) => !v)}
+              aria-expanded={showAll}
+            >
+              <span>{showAll ? t.projects.showLess : t.projects.showMore}</span>
+              <span className="projects-toggle-icon">
+                <i className="fas fa-chevron-down"></i>
+              </span>
+            </button>
+          </div>
+        )}
       </div>
     </section>
   )

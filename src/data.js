@@ -20,6 +20,7 @@ export const navLinks = [
   { href: '#experience', key: 'experience' },
   { href: '#skills', key: 'skills' },
   { href: '#projects', key: 'projects' },
+  { href: '#certificates', key: 'certificates' },
   { href: '#education', key: 'education' },
   { href: '#contact', key: 'contact' },
 ]
@@ -120,6 +121,82 @@ export const education = [
     },
     org: "PIGIER Côte d'Ivoire, Plateau/Abidjan",
     description: { fr: '', en: '' },
+  },
+]
+
+// Ajoute ici tes certificats. `image` peut être null (une icône générique
+// s'affichera à la place) ou un chemin vers /public/images/....
+// `credentialUrl` peut être null si tu n'as pas de lien de vérification :
+// dans ce cas le bouton "Voir le certificat" ne s'affiche tout simplement pas.
+// `dateISO` (format AAAA-MM-JJ) sert uniquement au tri : les certificats sont
+// automatiquement affichés du plus récent au plus ancien, peu importe
+// l'ordre dans lequel tu les ajoutes ci-dessous.
+export const certificates = [
+  {
+    title: {
+      fr: '2025 C Programming Bootcamp - The Complete C Language Course',
+      en: '2025 C Programming Bootcamp - The Complete C Language Course',
+    },
+    issuer: 'Udemy — Toppers Bootcamp',
+    date: { fr: '27 mars 2026', en: 'March 27, 2026' },
+    dateISO: '2026-03-27',
+    image: null,
+    credentialUrl: 'https://ude.my/UC-4b258001-ff06-4711-a978-5ae3a9fdd9b9',
+  },
+  {
+    title: {
+      fr: 'Machine Learning and Deep Learning Projects in Python',
+      en: 'Machine Learning and Deep Learning Projects in Python',
+    },
+    issuer: 'Udemy — S. Emadedin Hashemi',
+    date: { fr: '26 février 2026', en: 'February 26, 2026' },
+    dateISO: '2026-02-26',
+    image: null,
+    credentialUrl: 'https://ude.my/UC-c675edfe-9e36-434c-a194-c6e58166f8c4',
+  },
+  {
+    title: {
+      fr: 'Learn Functions & Function Expressions in Modern JavaScript',
+      en: 'Learn Functions & Function Expressions in Modern JavaScript',
+    },
+    issuer: 'Udemy — Noshad Yousuf',
+    date: { fr: '27 juin 2025', en: 'June 27, 2025' },
+    dateISO: '2025-06-27',
+    image: null,
+    credentialUrl: 'https://ude.my/UC-4ce14893-fe81-4564-908b-29428bbd756a',
+  },
+  {
+    title: {
+      fr: 'Mastering HTML5: From Beginner to Advanced',
+      en: 'Mastering HTML5: From Beginner to Advanced',
+    },
+    issuer: 'Udemy — Mehmood Khalil, Zaheer Irshad',
+    date: { fr: '4 décembre 2024', en: 'December 4, 2024' },
+    dateISO: '2024-12-04',
+    image: null,
+    credentialUrl: 'https://ude.my/UC-bf859b75-bc77-463f-9a0c-f848be370edb',
+  },
+  {
+    title: {
+      fr: 'Laravel and Postman Rest API Development: Beginner to Pro',
+      en: 'Laravel and Postman Rest API Development: Beginner to Pro',
+    },
+    issuer: 'Udemy — Mehmood Khalil',
+    date: { fr: '28 avril 2025', en: 'April 28, 2025' },
+    dateISO: '2025-04-28',
+    image: null,
+    credentialUrl: 'https://ude.my/UC-f4c429e6-5fdb-4ef8-a323-5769841025aa',
+  },
+  {
+    title: {
+      fr: 'Python And Django Framework And HTML 5 Stack Complete Course',
+      en: 'Python And Django Framework And HTML 5 Stack Complete Course',
+    },
+    issuer: 'Udemy — Horizon Tech',
+    date: { fr: '8 avril 2025', en: 'April 8, 2025' },
+    dateISO: '2025-04-08',
+    image: null,
+    credentialUrl: 'https://ude.my/UC-d7acb6ec-6ca6-4a9b-a78c-2f0b2ab5bb4d',
   },
 ]
 
