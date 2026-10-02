@@ -49,7 +49,7 @@ const og = `
   <rect x="80" y="352" width="56" height="3" fill="#3B82F6"/>
   <text x="156" y="364" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" letter-spacing="2" fill="#F8FAFC">FULL-STACK DEVELOPER</text>
   <text x="80" y="420" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" letter-spacing="2" fill="#22D3EE">DATA &amp; AI</text>
-  <text x="80" y="550" font-family="Courier New, monospace" font-size="22" fill="#94A3B8">Master BIHAR — ESATIC · Abidjan</text>
+  <text x="80" y="550" font-family="Courier New, monospace" font-size="22" fill="#94A3B8">Master 2 BIHAR — ESTIA × ESATIC · France</text>
   <text x="1120" y="550" text-anchor="end" font-family="Courier New, monospace" font-size="22" fill="#94A3B8">yao-konan-gold.vercel.app</text>
 </svg>`
 await sharp(Buffer.from(og)).png().toFile('public/og-image.png')

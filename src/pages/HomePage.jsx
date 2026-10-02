@@ -36,7 +36,7 @@ const SECTIONS = [
 export default function HomePage() {
   useDocumentMeta({
     description:
-      "Portfolio de Yao Konan, développeur Full-Stack orienté Data & IA, étudiant en Master Big Data & Intelligence Artificielle (BIHAR) à l'ESATIC, Abidjan.",
+      "Portfolio de Yao Konan, développeur Full-Stack orienté Data & IA, en Master 2 Big Data & Intelligence Artificielle (BIHAR) à l'ESTIA, en double diplôme avec l'ESATIC.",
   })
 
   return (

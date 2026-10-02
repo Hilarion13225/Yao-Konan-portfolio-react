@@ -1,7 +1,7 @@
 # Portfolio — Yao Konan
 
 Portfolio de **KONAN Yao Serge-Hilarion Boigny** — Full-Stack Developer · Data & AI,
-Master 1 Big Data & IA (BIHAR) à l'ESATIC.
+Master 2 Big Data & IA (BIHAR) à l'ESTIA, en double diplôme avec l'ESATIC.
 
 **Stack :** React 19 · Vite · Tailwind CSS 4 · React Router · Framer Motion · Lucide ·
 React Hook Form + Zod. JavaScript uniquement, aucun backend.
