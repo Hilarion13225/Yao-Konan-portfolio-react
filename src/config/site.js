@@ -11,7 +11,7 @@ export const site = {
   email: 'hilarion.konan2024@esatic.edu.ci',
   phones: ['+225 05 94 26 24 22', '+225 07 67 55 76 71'],
   cv: '/cv-konan-yao.pdf',
-  photo: '/images/opt/profile.webp',
+  photo: '/images/opt/about-941.webp',
 }
 
 export const socials = [

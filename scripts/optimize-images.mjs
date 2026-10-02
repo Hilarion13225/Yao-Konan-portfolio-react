@@ -17,7 +17,13 @@ for (const name of screenshots) {
     .toFile(`${OUT}/${name}.webp`)
 }
 
-await sharp(`${SRC}/profile1.png`).resize({ width: 640, withoutEnlargement: true }).webp({ quality: 82 }).toFile(`${OUT}/profile.webp`)
+// Portraits (originaux dans assets-src/portraits, non publiés) — deux largeurs pour srcset
+const portraits = { 'hero-dark': [640, 1024], 'hero-light': [640, 941], about: [560, 941], augmented: [560, 941] }
+for (const [name, widths] of Object.entries(portraits)) {
+  for (const width of widths) {
+    await sharp(`assets-src/portraits/${name}.png`).resize({ width }).webp({ quality: 78 }).toFile(`${OUT}/${name}-${width}.webp`)
+  }
+}
 
 // Favicon PNG pour Apple (le SVG sert de favicon principal)
 const mark = (size, radius) => `
@@ -45,13 +51,23 @@ const og = `
   <rect width="1200" height="630" fill="url(#grid)"/>
   <rect width="1200" height="630" fill="url(#g)"/>
   <text x="80" y="120" font-family="Courier New, monospace" font-size="22" letter-spacing="4" fill="#94A3B8">AVAILABLE FOR OPPORTUNITIES</text>
-  <text x="76" y="300" font-family="Arial, Helvetica, sans-serif" font-size="150" font-weight="700" letter-spacing="-6" fill="#F8FAFC">YAO KONAN</text>
-  <rect x="80" y="352" width="56" height="3" fill="#3B82F6"/>
-  <text x="156" y="364" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" letter-spacing="2" fill="#F8FAFC">FULL-STACK DEVELOPER</text>
-  <text x="80" y="420" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" letter-spacing="2" fill="#22D3EE">DATA &amp; AI</text>
-  <text x="80" y="550" font-family="Courier New, monospace" font-size="22" fill="#94A3B8">Master 2 BIHAR — ESTIA × ESATIC · France</text>
-  <text x="1120" y="550" text-anchor="end" font-family="Courier New, monospace" font-size="22" fill="#94A3B8">yao-konan-gold.vercel.app</text>
+  <text x="74" y="245" font-family="Arial, Helvetica, sans-serif" font-size="132" font-weight="700" letter-spacing="-5" fill="#F8FAFC">YAO</text>
+  <text x="74" y="370" font-family="Arial, Helvetica, sans-serif" font-size="132" font-weight="700" letter-spacing="-5" fill="#F8FAFC">KONAN</text>
+  <rect x="80" y="428" width="56" height="3" fill="#3B82F6"/>
+  <text x="156" y="440" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" letter-spacing="2" fill="#F8FAFC">FULL-STACK DEVELOPER</text>
+  <text x="80" y="490" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" letter-spacing="2" fill="#22D3EE">DATA &amp; AI</text>
+  <text x="80" y="575" font-family="Courier New, monospace" font-size="22" fill="#94A3B8">Master 2 BIHAR — ESTIA × ESATIC · France</text>
 </svg>`
-await sharp(Buffer.from(og)).png().toFile('public/og-image.png')
+
+// Portrait à droite, fondu vers la gauche
+const fade = Buffer.from(
+  '<svg xmlns="http://www.w3.org/2000/svg" width="520" height="630"><defs><linearGradient id="h" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".45" stop-color="#fff"/></linearGradient></defs><rect width="520" height="630" fill="url(#h)"/></svg>',
+)
+const portrait = await sharp('assets-src/portraits/hero-dark.png')
+  .resize(520, 630, { fit: 'cover', position: 'top' })
+  .composite([{ input: fade, blend: 'dest-in' }])
+  .png()
+  .toBuffer()
+await sharp(Buffer.from(og)).composite([{ input: portrait, left: 680, top: 0 }]).png().toFile('public/og-image.png')
 
 console.log('Images optimisées dans', OUT)

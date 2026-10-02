@@ -116,10 +116,35 @@ export default function DataToIntelligence({ index }) {
           </div>
         </div>
 
+        <div className="mt-16 grid gap-10 lg:grid-cols-12 lg:items-stretch">
+          {/* Human Augmented : l'humain augmenté par la donnée et l'IA */}
+          <Reveal as="figure" className="group relative overflow-hidden rounded-3xl border border-line lg:col-span-5">
+            <img
+              src="/images/opt/augmented-941.webp"
+              srcSet="/images/opt/augmented-560.webp 560w, /images/opt/augmented-941.webp 941w"
+              sizes="(min-width: 1024px) 38vw, 92vw"
+              alt={t.dataAi.figureAlt}
+              width="941"
+              height="1672"
+              loading="lazy"
+              decoding="async"
+              className="aspect-[4/5] h-full w-full object-cover object-[50%_35%] saturate-[0.8] transition duration-1000 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.04] group-hover:saturate-100"
+            />
+            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#05070A]/90 via-[#05070A]/10 to-transparent" />
+            <figcaption className="absolute inset-x-0 bottom-0 p-6 text-white">
+              <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-white/70">BIHAR</p>
+              <p className="mt-2 font-display text-xl font-semibold leading-tight md:text-2xl">Big Data Intelligence for Human Augmented Reality</p>
+            </figcaption>
+          </Reveal>
+
+          <div className="flex flex-col gap-8 lg:col-span-7">
+            <Reveal as="p" className="font-display text-[clamp(1.4rem,1rem+1.4vw,2.1rem)] font-medium leading-snug">
+              {t.dataAi.manifesto}
+            </Reveal>
         {/* Domaines : pratiqué vs en apprentissage */}
-        <ul className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid flex-1 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
           {dataDomains.map((d, i) => (
-            <Reveal as="li" key={d.title} delay={(i % 3) * 0.05} className="flex items-center justify-between gap-4 bg-bg p-6">
+            <Reveal as="li" key={d.title} delay={(i % 2) * 0.05} className="flex items-center justify-between gap-4 bg-bg p-6">
               <div>
                 <p className="font-display text-lg font-semibold">{d.title}</p>
                 {d.note && <p className="mt-1 font-mono text-xs text-subtle">{d.note}</p>}
@@ -135,6 +160,8 @@ export default function DataToIntelligence({ index }) {
             </Reveal>
           ))}
         </ul>
+          </div>
+        </div>
       </div>
     </section>
   )

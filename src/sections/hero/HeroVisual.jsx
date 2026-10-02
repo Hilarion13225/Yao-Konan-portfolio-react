@@ -1,25 +1,32 @@
 import { useEffect } from 'react'
 import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion'
 import { useFinePointer } from '../../hooks/useMediaQuery.js'
+import Portrait from '../../components/common/Portrait.jsx'
+import { cn } from '../../utils/cn.js'
 
-// Système visuel abstrait : CODE, DATA et AI convergent vers le noyau, qui produit des PRODUCTS.
-const C = 280
+// Le portrait au centre d'un système : CODE, DATA et AI convergent, PRODUCTS en sort.
+// Repère SVG 400×500, calqué sur le cadre 4/5 du portrait.
+const CX = 200
+const CY = 215
+const R = 182
+
 const NODES = [
-  { id: 'data', label: 'DATA', x: C, y: 64, path: `M${C} 84 V${C - 40}` },
-  { id: 'code', label: 'CODE', x: 56, y: C, path: `M86 ${C} H${C - 92}` },
-  { id: 'ai', label: 'AI', x: 504, y: C, path: `M474 ${C} H${C + 92}` },
-  { id: 'products', label: 'PRODUCTS', x: C, y: 496, path: `M${C} ${C + 40} V476`, out: true },
+  { id: 'data', label: 'DATA', x: CX, y: CY - R, path: `M${CX} ${CY - R + 16} V${CY - R + 62}` },
+  { id: 'code', label: 'CODE', x: CX - R, y: CY, path: `M${CX - R + 30} ${CY} H${CX - R + 76}` },
+  { id: 'ai', label: 'AI', x: CX + R, y: CY, path: `M${CX + R - 24} ${CY} H${CX + R - 70}` },
+  { id: 'products', label: 'PRODUCTS', x: CX, y: CY + R + 58, path: `M${CX} ${CY + R - 6} V${CY + R + 42}`, out: true },
 ]
 
-// Petits satellites : technologies réellement utilisées, reliées à leur axe.
+// Technologies réellement utilisées, posées sur l'orbite.
 const SATELLITES = [
-  { label: 'PostgreSQL', x: 150, y: 120, to: [C - 10, 84] },
-  { label: 'MongoDB', x: 412, y: 116, to: [C + 10, 84] },
-  { label: 'React', x: 88, y: 392, to: [86, C + 8] },
-  { label: 'Laravel', x: 92, y: 168, to: [86, C - 8] },
-  { label: 'ML', x: 470, y: 176, to: [474, C - 8] },
-  { label: 'LLM', x: 462, y: 392, to: [474, C + 8] },
+  { label: 'PostgreSQL', angle: -130 },
+  { label: 'MongoDB', angle: -50 },
+  { label: 'Laravel', angle: 155 },
+  { label: 'React', angle: 128 },
+  { label: 'ML', angle: 25 },
+  { label: 'LLM', angle: 52 },
 ]
+const polar = (deg, r = R) => [CX + r * Math.cos((deg * Math.PI) / 180), CY + r * Math.sin((deg * Math.PI) / 180)]
 
 export default function HeroVisual({ className }) {
   const reduce = useReducedMotion()
@@ -28,10 +35,10 @@ export default function HeroVisual({ className }) {
   const my = useMotionValue(0)
   const sx = useSpring(mx, { stiffness: 60, damping: 18 })
   const sy = useSpring(my, { stiffness: 60, damping: 18 })
-  const farX = useTransform(sx, (v) => v * -10)
-  const farY = useTransform(sy, (v) => v * -10)
-  const nearX = useTransform(sx, (v) => v * 16)
-  const nearY = useTransform(sy, (v) => v * 16)
+  const photoX = useTransform(sx, (v) => v * -8)
+  const photoY = useTransform(sy, (v) => v * -8)
+  const netX = useTransform(sx, (v) => v * 14)
+  const netY = useTransform(sy, (v) => v * 14)
 
   useEffect(() => {
     if (!fine || reduce) return
@@ -44,115 +51,90 @@ export default function HeroVisual({ className }) {
   }, [fine, reduce, mx, my])
 
   return (
-    <div aria-hidden="true" className={className}>
-      <svg viewBox="0 0 560 560" className="h-full w-full overflow-visible" fill="none">
+    <div className={cn('relative aspect-[4/5] w-full', className)}>
+      {/* Halo */}
+      <div aria-hidden="true" className="absolute inset-[8%] rounded-full bg-[radial-gradient(circle,var(--glow),transparent_68%)] blur-2xl" />
+
+      {/* Portrait, fondu dans l'arrière-plan */}
+      <motion.div
+        style={{ x: photoX, y: photoY }}
+        initial={{ opacity: 0, scale: 1.04 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+        className="absolute inset-x-[9%] bottom-[6%] top-[3%] [mask-image:radial-gradient(ellipse_54%_60%_at_50%_40%,#000_50%,transparent_92%)]"
+      >
+        <Portrait eager className="h-full w-full object-cover object-[50%_18%]" />
+      </motion.div>
+
+      {/* Réseau en orbite */}
+      <motion.svg
+        aria-hidden="true"
+        viewBox="0 0 400 500"
+        fill="none"
+        style={{ x: netX, y: netY }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, delay: 0.7 }}
+        className="absolute inset-0 h-full w-full overflow-visible"
+      >
         <defs>
-          <radialGradient id="hv-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.28" />
-            <stop offset="60%" stopColor="var(--accent)" stopOpacity="0.04" />
-            <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
-          </radialGradient>
-          <linearGradient id="hv-core" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="var(--accent)" />
-            <stop offset="100%" stopColor="var(--cyan)" />
+          <linearGradient id="hv-ring" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.7" />
+            <stop offset="50%" stopColor="var(--line-strong)" />
+            <stop offset="100%" stopColor="var(--cyan)" stopOpacity="0.7" />
           </linearGradient>
         </defs>
 
-        {/* Couche lointaine : halo + orbites */}
-        <motion.g style={{ x: farX, y: farY }}>
-          <circle cx={C} cy={C} r="250" fill="url(#hv-glow)" />
-          <circle cx={C} cy={C} r="150" stroke="var(--line-strong)" strokeDasharray="2 6" />
-          <circle cx={C} cy={C} r="226" stroke="var(--line)" />
-          <motion.g
-            animate={reduce ? undefined : { rotate: 360 }}
-            transition={{ duration: 90, repeat: Infinity, ease: 'linear' }}
-          >
-            {/* cercle invisible : centre la boîte englobante pour une rotation autour du noyau */}
-            <circle cx={C} cy={C} r="226" fill="none" />
-            <circle cx={C + 150} cy={C} r="2.5" fill="var(--cyan)" />
-            <circle cx={C - 106} cy={C - 106} r="2" fill="var(--muted)" />
-            <circle cx={C} cy={C + 226} r="2" fill="var(--accent)" />
-          </motion.g>
+        <circle cx={CX} cy={CY} r={R} stroke="url(#hv-ring)" />
+        <circle cx={CX} cy={CY} r={R + 22} stroke="var(--line)" strokeDasharray="2 7" />
+
+        {/* Point qui parcourt l'orbite */}
+        <motion.g
+          animate={reduce ? undefined : { rotate: 360 }}
+          transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
+        >
+          <circle cx={CX} cy={CY} r={R + 22} fill="none" />
+          <circle cx={CX + R + 22} cy={CY} r="2.5" fill="var(--cyan)" />
         </motion.g>
 
-        {/* Satellites */}
-        <g>
-          {SATELLITES.map((s) => (
+        {SATELLITES.map((s) => {
+          const [x, y] = polar(s.angle)
+          const outside = Math.cos((s.angle * Math.PI) / 180) >= 0
+          return (
             <g key={s.label}>
-              <path d={`M${s.x} ${s.y} L${s.to[0]} ${s.to[1]}`} stroke="var(--line)" />
-              <circle cx={s.x} cy={s.y} r="3" fill="var(--bg)" stroke="var(--line-strong)" />
+              <circle cx={x} cy={y} r="3" fill="var(--bg)" stroke="var(--line-strong)" />
               <text
-                x={s.x}
-                y={s.y - 10}
-                textAnchor="middle"
+                x={x + (outside ? 9 : -9)}
+                y={y + 3.5}
+                textAnchor={outside ? 'start' : 'end'}
                 className="fill-subtle font-mono"
-                style={{ fontSize: 10, letterSpacing: '0.04em' }}
+                style={{ fontSize: 9.5, letterSpacing: '0.04em' }}
               >
                 {s.label}
               </text>
             </g>
-          ))}
-        </g>
+          )
+        })}
 
-        {/* Flux principaux */}
-        {NODES.map((n, i) => (
-          <g key={n.id}>
-            <path d={n.path} stroke="var(--line-strong)" />
-            <path
-              d={n.path}
-              stroke={n.out ? 'var(--cyan)' : 'var(--accent)'}
-              strokeWidth="1.5"
-              strokeDasharray="4 20"
-              className="animate-flow"
-              style={{ animationDelay: `${i * -0.6}s` }}
-            />
-            {!reduce && (
-              <circle r="3" fill={n.out ? 'var(--cyan)' : 'var(--accent)'}>
-                <animateMotion dur={`${2.6 + i * 0.3}s`} repeatCount="indefinite" path={n.path} />
-              </circle>
-            )}
-          </g>
-        ))}
-
-        {/* Couche proche : nœuds et noyau */}
-        <motion.g style={{ x: nearX, y: nearY }}>
-          {NODES.map((n) => {
-            const w = n.label.length * 9 + 28
-            return (
-              <g key={n.id}>
-                <rect x={n.x - w / 2} y={n.y - 15} width={w} height="30" rx="15" fill="var(--bg)" stroke="var(--line-strong)" />
-                <text
-                  x={n.x}
-                  y={n.y + 4}
-                  textAnchor="middle"
-                  className="fill-fg font-mono"
-                  style={{ fontSize: 11, letterSpacing: '0.14em' }}
-                >
-                  {n.label}
-                </text>
-              </g>
-            )
-          })}
-
-          <g>
-            <rect x={C - 92} y={C - 40} width="184" height="80" rx="14" fill="var(--surface)" stroke="url(#hv-core)" strokeWidth="1.25" />
-            <rect x={C - 92} y={C - 40} width="184" height="22" rx="14" fill="var(--surface-2)" />
-            <circle cx={C - 78} cy={C - 29} r="2.5" fill="var(--line-strong)" />
-            <circle cx={C - 69} cy={C - 29} r="2.5" fill="var(--line-strong)" />
-            <circle cx={C - 60} cy={C - 29} r="2.5" fill="var(--line-strong)" />
-            <text
-              x={C}
-              y={C + 14}
-              textAnchor="middle"
-              className="fill-fg font-display"
-              style={{ fontSize: 19, fontWeight: 600, letterSpacing: '0.04em' }}
-            >
-              YAO<tspan fill="var(--cyan)">.</tspan>KONAN
-            </text>
-            <circle cx={C + 78} cy={C - 29} r="3" fill="var(--cyan)" className="animate-pulse-soft" style={{ transformOrigin: `${C + 78}px ${C - 29}px` }} />
-          </g>
-        </motion.g>
-      </svg>
+        {NODES.map((n, i) => {
+          const w = n.label.length * 8 + 24
+          const color = n.out ? 'var(--cyan)' : 'var(--accent)'
+          return (
+            <g key={n.id}>
+              <path d={n.path} stroke={color} strokeWidth="1.5" strokeDasharray="4 8" className="animate-flow" />
+              {!reduce && (
+                <circle r="2.5" fill={color}>
+                  <animateMotion dur={`${2.2 + i * 0.3}s`} repeatCount="indefinite" path={n.path} />
+                </circle>
+              )}
+              <rect x={n.x - w / 2} y={n.y - 13} width={w} height="26" rx="13" fill="var(--bg)" stroke="var(--line-strong)" />
+              <text x={n.x} y={n.y + 4} textAnchor="middle" className="fill-fg font-mono" style={{ fontSize: 10, letterSpacing: '0.14em' }}>
+                {n.label}
+              </text>
+            </g>
+          )
+        })}
+      </motion.svg>
     </div>
   )
 }

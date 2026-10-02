@@ -4,6 +4,7 @@ import { useLanguage } from '../../i18n/LanguageContext.jsx'
 import AnimatedText from '../../components/ui/AnimatedText.jsx'
 import Button from '../../components/ui/Button.jsx'
 import HeroVisual from './HeroVisual.jsx'
+import Portrait from '../../components/common/Portrait.jsx'
 
 const EASE = [0.22, 1, 0.36, 1]
 const fadeUp = (delay) => ({
@@ -27,9 +28,23 @@ export default function Hero() {
       />
 
       <div className="container-page relative flex flex-1 flex-col">
-        <HeroVisual className="pointer-events-none absolute -right-[42%] -top-[6%] sm:top-[2%] -z-10 w-[120%] max-w-[640px] opacity-20 sm:-right-[20%] sm:w-[80%] md:opacity-50 lg:right-0 lg:top-1/2 lg:w-[46%] lg:-translate-y-[55%] lg:opacity-100" />
+        {/* Mobile / tablette : portrait en tête de page, le nom vient le chevaucher */}
+        <motion.div
+          aria-hidden="true"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.4, delay: 0.1 }}
+          className="pointer-events-none relative -mx-5 -mt-24 h-[56svh] max-h-[620px] md:-mx-10 md:-mt-28 lg:hidden"
+        >
+          <Portrait
+            eager
+            sizes="100vw"
+            className="absolute inset-0 h-full w-full object-cover object-[50%_22%] [mask-image:linear-gradient(to_bottom,#000_50%,transparent_96%)]"
+          />
+        </motion.div>
 
-        <div className="flex flex-1 flex-col justify-center py-10">
+        <div className="grid flex-1 items-center gap-10 lg:grid-cols-12">
+          <div className="relative z-10 -mt-[16svh] flex flex-col justify-center pb-10 lg:col-span-7 lg:mt-0 lg:py-10">
           <motion.p {...fadeUp(0.1)} className="eyebrow mb-8 inline-flex items-center gap-2.5 self-start rounded-full border border-line bg-bg/60 px-3.5 py-2 backdrop-blur">
             <span className="relative flex size-2">
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-60 motion-reduce:hidden" />
@@ -40,7 +55,7 @@ export default function Hero() {
 
           <h1 id="hero-title" className="font-display font-semibold uppercase leading-[0.86] tracking-[-0.04em]">
             <span className="sr-only">Yao Konan — {t.hero.roleA}, {t.hero.roleB}</span>
-            <span aria-hidden="true" className="block text-[clamp(4.2rem,17vw,11.5rem)]">
+            <span aria-hidden="true" className="block text-[clamp(4.2rem,19vw,9rem)] lg:text-[clamp(6rem,10.5vw,10.5rem)]">
               <AnimatedText as="span" text="Yao" immediate delay={0.25} className="block" />
               <AnimatedText as="span" text="Konan" immediate delay={0.35} className="block" wordClassName="text-gradient" />
             </span>
@@ -69,6 +84,9 @@ export default function Hero() {
               {t.hero.ctaContact}
             </Button>
           </motion.div>
+        </div>
+
+          <HeroVisual className="hidden lg:col-span-5 lg:block" />
         </div>
 
         <motion.div

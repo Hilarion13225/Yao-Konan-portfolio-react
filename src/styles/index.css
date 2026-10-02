@@ -1,5 +1,8 @@
 @import 'tailwindcss';
 
+/* `light:` cible le thème clair (ex. afficher la photo sur fond blanc) */
+@custom-variant light (&:where([data-theme='light'], [data-theme='light'] *));
+
 /* ------------------------------------------------------------------ */
 /* Design tokens — le thème sombre est le thème principal              */
 /* ------------------------------------------------------------------ */

@@ -39,6 +39,9 @@ est simplement masqué : on n'affiche jamais de contenu inventé.
 liste `screenshots` de `scripts/optimize-images.mjs`, lancer `npm run images`, puis référencer
 `/images/opt/<nom>.webp` dans `data/projects.js`.
 
+**Changer un portrait :** remplacer le PNG dans `assets-src/portraits/` (`hero-dark` pour le thème sombre,
+`hero-light` pour le thème clair, `about`, `augmented`), puis lancer `npm run images`. Ce dossier n'est pas publié.
+
 ## Structure
 
 ```

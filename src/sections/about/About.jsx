@@ -19,12 +19,14 @@ export default function About({ index }) {
             <div className="relative overflow-hidden rounded-2xl border border-line bg-surface">
               <img
                 src={site.photo}
+                srcSet="/images/opt/about-560.webp 560w, /images/opt/about-941.webp 941w"
+                sizes="(min-width: 768px) 30vw, 90vw"
                 alt={a.photoAlt}
-                width="492"
-                height="507"
+                width="941"
+                height="1672"
                 loading="lazy"
                 decoding="async"
-                className="aspect-[492/507] w-full object-cover grayscale-[0.85] transition duration-700 group-hover:scale-[1.03] group-hover:grayscale-0"
+                className="aspect-[4/5] w-full object-cover object-[50%_12%] transition duration-1000 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.04]"
               />
               <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-bg/70 via-transparent to-transparent" />
             </div>
