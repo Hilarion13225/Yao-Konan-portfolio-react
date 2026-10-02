@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yao-konan-gold.vercel.app/sitemap.xml

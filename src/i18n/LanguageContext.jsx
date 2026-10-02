@@ -1,30 +1,42 @@
-import { createContext, useContext, useEffect, useState } from 'react'
-import { translations } from './translations.js'
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { ui } from './ui.js'
 
+const STORAGE_KEY = 'portfolio-lang'
 const LanguageContext = createContext(null)
 
+function readInitialLang() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY)
+    if (saved === 'fr' || saved === 'en') return saved
+  } catch {
+    // stockage indisponible (navigation privée…) : on garde le français
+  }
+  return 'fr'
+}
+
 export function LanguageProvider({ children }) {
-  const [lang, setLang] = useState(() => {
-    if (typeof window === 'undefined') return 'fr'
-    return localStorage.getItem('portfolio-lang') || 'fr'
-  })
+  const [lang, setLang] = useState(readInitialLang)
 
   useEffect(() => {
-    localStorage.setItem('portfolio-lang', lang)
     document.documentElement.lang = lang
+    try {
+      localStorage.setItem(STORAGE_KEY, lang)
+    } catch {
+      // ignore
+    }
   }, [lang])
 
-  function toggleLang() {
-    setLang((prev) => (prev === 'fr' ? 'en' : 'fr'))
-  }
+  const toggleLang = useCallback(() => setLang((l) => (l === 'fr' ? 'en' : 'fr')), [])
 
-  const t = translations[lang]
-
-  return (
-    <LanguageContext.Provider value={{ lang, setLang, toggleLang, t }}>
-      {children}
-    </LanguageContext.Provider>
+  // `tr` résout une valeur bilingue { fr, en } ; une chaîne simple est renvoyée telle quelle.
+  const tr = useCallback(
+    (value) => (value && typeof value === 'object' && 'fr' in value ? value[lang] : value),
+    [lang],
   )
+
+  const value = useMemo(() => ({ lang, setLang, toggleLang, tr, t: ui[lang] }), [lang, toggleLang, tr])
+
+  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>
 }
 
 export function useLanguage() {

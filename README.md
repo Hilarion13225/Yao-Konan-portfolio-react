@@ -1,58 +1,54 @@
-# Portfolio — KONAN Yao
+# Portfolio — Yao Konan
 
-Portfolio React (Vite) de KONAN Yao Serge-Hilarion Boigny, étudiant en Big Data & Intelligence Artificielle.
+Portfolio de **KONAN Yao Serge-Hilarion Boigny** — Full-Stack Developer · Data & AI,
+Master 1 Big Data & IA (BIHAR) à l'ESATIC.
 
-## Installation
+**Stack :** React 19 · Vite · Tailwind CSS 4 · React Router · Framer Motion · Lucide ·
+React Hook Form + Zod. JavaScript uniquement, aucun backend.
+
+## Commandes
 
 ```bash
 npm install
-```
-
-## Lancer en développement
-
-```bash
-npm run dev
-```
-
-Puis ouvrez l'URL affichée (généralement http://localhost:5173).
-
-## Build de production
-
-```bash
-npm run build
-```
-
-Les fichiers optimisés seront générés dans le dossier `dist/`.
-
-## Structure du projet
-
-```
-src/
-  components/
-    Header.jsx       Barre de navigation + logo + menu mobile
-    Hero.jsx          Section d'accueil + bloc "terminal" animé
-    About.jsx         Section À propos
-    Experience.jsx     Timeline des expériences + illustration
-    Skills.jsx        Carrousel de compétences (icônes en défilement)
-    Projects.jsx       Grille de projets
-    Education.jsx      Timeline des formations + illustration
-    Contact.jsx        Formulaire de contact
-    Footer.jsx         Pied de page
-    Reveal.jsx         Composant utilitaire (animation d'apparition au scroll)
-  data.js              Toutes les données du portfolio (profil, compétences, projets, expériences, formations)
-  index.css            Styles globaux
-  App.jsx              Assemble tous les composants
-  main.jsx             Point d'entrée React
+npm run dev       # développement — http://localhost:5173
+npm run build     # build de production dans dist/ (régénère aussi le sitemap)
+npm run preview   # sert le build localement
+npm run images    # régénère les images optimisées (WebP), l'image Open Graph et l'icône Apple
 ```
 
 ## Modifier le contenu
 
-Tout le contenu (nom, compétences, projets, expériences, formations) se trouve dans **`src/data.js`** —
-un seul fichier à modifier, pas besoin de toucher aux composants.
+Tout le contenu est séparé des composants, dans `src/data/` et `src/config/` :
 
-Pour ajouter une image à un projet, renseignez le champ `thumb` dans `data.js` avec l'URL de l'image
-(par exemple une image placée dans `public/images/mon-projet.png` → `thumb: '/images/mon-projet.png'`).
+| Fichier | Contenu |
+|---|---|
+| `config/site.js` | identité, coordonnées, réseaux, navigation |
+| `data/projects.js` | projets (cartes + pages `/projects/:slug`) |
+| `data/skills.js` | axes « What I build », domaines, bande défilante, « Currently exploring » |
+| `data/experience.js` | expériences professionnelles |
+| `data/education.js` | formations |
+| `data/achievements.js` | distinctions et certificats (triés automatiquement par date) |
+| `data/approach.js` | « How I build », « More than code », pipeline Data & AI |
+| `data/interests.js` | « Beyond the code » — la section reste masquée tant que la liste est vide |
+| `i18n/ui.js` | textes d'interface FR / EN (dont le texte « About ») |
 
-## Icônes
+Les champs bilingues s'écrivent `{ fr: '…', en: '…' }`. Un champ vide (`null` ou `[]`)
+est simplement masqué : on n'affiche jamais de contenu inventé.
 
-Les icônes utilisent [Font Awesome 6](https://fontawesome.com/) (chargé via CDN dans `index.html`).
+**Ajouter une capture à un projet :** placer le PNG dans `public/images/`, l'ajouter à la
+liste `screenshots` de `scripts/optimize-images.mjs`, lancer `npm run images`, puis référencer
+`/images/opt/<nom>.webp` dans `data/projects.js`.
+
+## Structure
+
+```
+src/
+  components/  common/ (curseur, scroll, diagramme…) · layout/ · navigation/ · ui/ (Button, SectionHeader…)
+  sections/    hero · about · skills · projects · engineering · data-ai · experience · education · exploring · github · personal · contact
+  pages/       HomePage · ProjectPage · NotFound
+  data/ config/ hooks/ services/ utils/ i18n/ styles/
+```
+
+## Déploiement
+
+Vercel : `vercel.json` redirige toutes les routes vers `index.html` (routing côté client).

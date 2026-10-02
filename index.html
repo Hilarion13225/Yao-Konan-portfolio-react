@@ -1,15 +1,70 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KONAN Yao | Étudiant Big Data & IA</title>
-  <meta name="description" content="Portfolio de KONAN Yao Serge-Hilarion Boigny, étudiant en Big Data & Intelligence Artificielle à l'ESATIC, Abidjan." />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="icon" type="image/png" href="/images/logo.png" />
-</head>
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
-</body>
+<!doctype html>
+<html lang="fr" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yao Konan — Full-Stack Developer | Data & AI</title>
+    <meta
+      name="description"
+      content="Portfolio de Yao Konan, développeur Full-Stack orienté Data & IA, étudiant en Master Big Data & Intelligence Artificielle (BIHAR) à l'ESATIC, Abidjan. Applications web, systèmes intelligents et produits numériques."
+    />
+    <meta name="author" content="KONAN Yao Serge-Hilarion Boigny" />
+    <meta name="theme-color" content="#05070A" />
+    <link rel="canonical" href="https://yao-konan-gold.vercel.app/" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Yao Konan" />
+    <meta property="og:url" content="https://yao-konan-gold.vercel.app/" />
+    <meta property="og:title" content="Yao Konan — Full-Stack Developer | Data & AI" />
+    <meta
+      property="og:description"
+      content="Applications web modernes, systèmes intelligents et produits numériques. Full-Stack, Data & IA — Master BIHAR, ESATIC."
+    />
+    <meta property="og:image" content="https://yao-konan-gold.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Yao Konan — Full-Stack Developer | Data & AI" />
+    <meta
+      name="twitter:description"
+      content="Applications web modernes, systèmes intelligents et produits numériques. Full-Stack, Data & IA."
+    />
+    <meta name="twitter:image" content="https://yao-konan-gold.vercel.app/og-image.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "KONAN Yao Serge-Hilarion Boigny",
+        "alternateName": "Yao Konan",
+        "jobTitle": "Full-Stack Developer — Data & AI",
+        "url": "https://yao-konan-gold.vercel.app/",
+        "image": "https://yao-konan-gold.vercel.app/images/opt/profile.webp",
+        "alumniOf": [{ "@type": "CollegeOrUniversity", "name": "ESATIC" }],
+        "address": { "@type": "PostalAddress", "addressLocality": "Abidjan", "addressCountry": "CI" },
+        "sameAs": ["https://github.com/Hilarion13225", "https://linkedin.com/in/konan-yao-serge/"]
+      }
+    </script>
+
+    <!-- Applique le thème avant le premier rendu pour éviter un flash -->
+    <script>
+      try {
+        var t = localStorage.getItem('portfolio-theme')
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t
+        var l = localStorage.getItem('portfolio-lang')
+        if (l === 'fr' || l === 'en') document.documentElement.lang = l
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>Yao Konan — Full-Stack Developer | Data & AI. Ce site nécessite JavaScript.</noscript>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

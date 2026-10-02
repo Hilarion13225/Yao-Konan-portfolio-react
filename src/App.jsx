@@ -1,45 +1,24 @@
-import { useEffect } from 'react'
-import Header from './components/Header.jsx'
-import Hero from './components/Hero.jsx'
-import About from './components/About.jsx'
-import Experience from './components/Experience.jsx'
-import Skills from './components/Skills.jsx'
-import Projects from './components/Projects.jsx'
-import Certificates from './components/Certificates.jsx'
-import Education from './components/Education.jsx'
-import Contact from './components/Contact.jsx'
-import Footer from './components/Footer.jsx'
- 
+import { lazy, Suspense } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Layout from './components/layout/Layout.jsx'
+import HomePage from './pages/HomePage.jsx'
+
+// Les pages secondaires sont chargées à la demande (code splitting).
+const ProjectPage = lazy(() => import('./pages/ProjectPage.jsx'))
+const NotFound = lazy(() => import('./pages/NotFound.jsx'))
+
 export default function App() {
-  // Corrige le saut d'ancre lors d'un chargement direct sur une URL du
-  // type /#about : au premier rendu, la section ciblée n'existe pas encore
-  // dans le DOM (React vient tout juste de monter), donc le saut natif du
-  // navigateur échoue silencieusement. On le refait nous-mêmes une fois
-  // que tout est bien rendu.
-  useEffect(() => {
-    if (!window.location.hash) return
-    const id = window.location.hash.slice(1)
-    const target = document.getElementById(id)
-    if (target) {
-      // requestAnimationFrame garantit que le layout (dont --header-h) est stable
-      requestAnimationFrame(() => {
-        target.scrollIntoView({ block: 'start' })
-      })
-    }
-  }, [])
- 
   return (
-    <>
-      <Header />
-      <Hero />
-      <About />
-      <Experience />
-      <Skills />
-      <Projects />
-      <Certificates />
-      <Education />
-      <Contact />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Suspense fallback={<div className="min-h-dvh" />}>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="projects/:slug" element={<ProjectPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   )
 }
