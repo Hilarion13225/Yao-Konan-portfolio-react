@@ -212,17 +212,19 @@
   transform: none;
 }
 
-/* Animations pilotées par le scroll (CSS) — amélioration progressive */
+/* Animations pilotées par le scroll.
+   Navigateurs récents : CSS pur (animation-timeline).
+   Autres : html.no-sdt + variables mises à jour par utils/scrollFallback.js. */
 .scroll-progress { transform: scaleX(0); }
 .draw-y { transform: scaleY(0); }
 .draw-x { transform: scaleX(0); }
 @supports (animation-timeline: scroll()) {
-  .scroll-progress {
+  html:not(.no-sdt) .scroll-progress {
     animation: grow-x linear both;
     animation-timeline: scroll(root);
   }
-  .draw-on-scroll { view-timeline-name: --steps; }
-  .draw-y, .draw-x {
+  html:not(.no-sdt) .draw-on-scroll { view-timeline-name: --steps; }
+  html:not(.no-sdt) :is(.draw-y, .draw-x) {
     animation: var(--draw) linear both;
     animation-timeline: --steps;
     animation-range: entry 20% exit 40%;
@@ -230,14 +232,13 @@
   .draw-y { --draw: grow-y; }
   .draw-x { --draw: grow-x; }
 }
-@supports not (animation-timeline: scroll()) {
-  .scroll-progress { display: none; }
-  .draw-y, .draw-x { transform: none; }
-}
+.no-sdt .scroll-progress { transform: scaleX(var(--scroll-progress, 0)); }
+.no-sdt .draw-y { transform: scaleY(var(--draw-progress, 0)); }
+.no-sdt .draw-x { transform: scaleX(var(--draw-progress, 0)); }
 @keyframes grow-x { to { transform: scaleX(1); } }
 @keyframes grow-y { to { transform: scaleY(1); } }
 @media (prefers-reduced-motion: reduce) {
-  .draw-y, .draw-x { animation: none; transform: none; }
+  :is(.draw-y, .draw-x) { animation: none !important; transform: none !important; }
 }
 
 /* Grain très léger pour donner de la matière aux surfaces sombres */
