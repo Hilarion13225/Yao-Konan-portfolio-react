@@ -42,7 +42,7 @@ export default function Capabilities({ index }) {
                         isOpen ? 'text-fg' : 'text-muted group-hover:text-fg',
                       )}
                     >
-                      {cap.title}
+                      {tr(cap.title)}
                     </span>
                     <span className={cn('grid size-10 place-items-center rounded-full border transition-all duration-300', isOpen ? 'rotate-45 border-accent text-accent' : 'border-line-strong text-muted')}>
                       <Plus className="size-4" aria-hidden="true" />
@@ -64,8 +64,8 @@ export default function Capabilities({ index }) {
                         <div className="md:col-span-4">
                           <ul className="flex flex-wrap gap-2">
                             {cap.stack.map((s) => (
-                              <li key={s}>
-                                <TechBadge>{s}</TechBadge>
+                              <li key={tr(s)}>
+                                <TechBadge>{tr(s)}</TechBadge>
                               </li>
                             ))}
                           </ul>

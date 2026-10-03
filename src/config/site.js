@@ -3,7 +3,7 @@ export const site = {
   name: 'Yao Konan',
   fullName: 'KONAN Yao Serge-Hilarion Boigny',
   url: 'https://yao-konan-gold.vercel.app',
-  title: 'Yao Konan — Full-Stack Developer | Data & AI',
+  title: { fr: 'Yao Konan — Développeur Full-Stack | Data & IA', en: 'Yao Konan — Full-Stack Developer | Data & AI' },
   role: { fr: 'Développeur Full-Stack', en: 'Full-Stack Developer' },
   focus: 'Data & AI',
   school: 'ESTIA × ESATIC',

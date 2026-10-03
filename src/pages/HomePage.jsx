@@ -1,4 +1,5 @@
 import { useDocumentMeta } from '../hooks/useDocumentMeta.js'
+import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { interests } from '../data/interests.js'
 import Hero from '../sections/hero/Hero.jsx'
 import About from '../sections/about/About.jsx'
@@ -34,9 +35,12 @@ const SECTIONS = [
 ]
 
 export default function HomePage() {
+  const { tr } = useLanguage()
   useDocumentMeta({
-    description:
-      "Portfolio de Yao Konan, développeur Full-Stack orienté Data & IA, en Master 2 Big Data & Intelligence Artificielle (BIHAR) à l'ESTIA, en double diplôme avec l'ESATIC.",
+    description: tr({
+      fr: "Portfolio de Yao Konan, développeur Full-Stack orienté Data & IA, en Master 2 Big Data & Intelligence Artificielle (BIHAR) à l'ESTIA, en double diplôme avec l'ESATIC.",
+      en: "Portfolio of Yao Konan, Full-Stack Developer focused on Data & AI, in the second year of the BIHAR Big Data & Artificial Intelligence Master's at ESTIA, a dual degree with ESATIC.",
+    }),
   })
 
   return (

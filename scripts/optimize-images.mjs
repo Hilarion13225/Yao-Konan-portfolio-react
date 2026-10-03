@@ -50,12 +50,12 @@ const og = `
   <rect width="1200" height="630" fill="#05070A"/>
   <rect width="1200" height="630" fill="url(#grid)"/>
   <rect width="1200" height="630" fill="url(#g)"/>
-  <text x="80" y="120" font-family="Courier New, monospace" font-size="22" letter-spacing="4" fill="#94A3B8">AVAILABLE FOR OPPORTUNITIES</text>
+  <text x="80" y="120" font-family="Courier New, monospace" font-size="22" letter-spacing="4" fill="#94A3B8">OUVERT AUX OPPORTUNITÉS</text>
   <text x="74" y="245" font-family="Arial, Helvetica, sans-serif" font-size="132" font-weight="700" letter-spacing="-5" fill="#F8FAFC">YAO</text>
   <text x="74" y="370" font-family="Arial, Helvetica, sans-serif" font-size="132" font-weight="700" letter-spacing="-5" fill="#F8FAFC">KONAN</text>
   <rect x="80" y="428" width="56" height="3" fill="#3B82F6"/>
-  <text x="156" y="440" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" letter-spacing="2" fill="#F8FAFC">FULL-STACK DEVELOPER</text>
-  <text x="80" y="490" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" letter-spacing="2" fill="#22D3EE">DATA &amp; AI</text>
+  <text x="156" y="440" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" letter-spacing="2" fill="#F8FAFC">DÉVELOPPEUR FULL-STACK</text>
+  <text x="80" y="490" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" letter-spacing="2" fill="#22D3EE">DATA &amp; IA</text>
   <text x="80" y="575" font-family="Courier New, monospace" font-size="22" fill="#94A3B8">Master 2 BIHAR — ESTIA × ESATIC · France</text>
 </svg>`
 

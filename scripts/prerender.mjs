@@ -44,10 +44,10 @@ for (const p of projects) {
       <h1>${esc(fr(p.title))}</h1>
       <p>${esc(fr(p.tagline))}</p>
       <p>${esc(description)}</p>
-      ${p.problem ? `<h2>Problem</h2><p>${esc(fr(p.problem))}</p>` : ''}
+      ${p.problem ? `<h2>Problème</h2><p>${esc(fr(p.problem))}</p>` : ''}
       ${p.solution ? `<h2>Solution</h2><p>${esc(fr(p.solution))}</p>` : ''}
-      <h2>Technologies</h2><p>${esc(p.stack.join(', '))}</p>
-      <p><a href="/" style="color:#22D3EE">Yao Konan — Full-Stack Developer | Data &amp; AI</a></p>
+      <h2>Technologies</h2><p>${esc(p.stack.map(fr).join(', '))}</p>
+      <p><a href="/" style="color:#22D3EE">Yao Konan — Développeur Full-Stack | Data &amp; IA</a></p>
     </main>`
   html = html.replace('<div id="root"></div>', `<div id="root">${body}</div>`)
   // Masqué dès que JavaScript tourne, pour éviter un flash avant le rendu React

@@ -31,7 +31,7 @@ export default function HowIBuild({ index }) {
                 <span className="absolute inset-[4px] rounded-full bg-accent" />
               </span>
               <p className="font-mono text-xs text-subtle">{pad(i + 1)}</p>
-              <h3 className="mt-2 font-display text-xl font-semibold uppercase tracking-[0.04em]">{step.title}</h3>
+              <h3 className="mt-2 font-display text-xl font-semibold uppercase tracking-[0.04em]">{tr(step.title)}</h3>
               <p className="mt-2 max-w-sm text-sm text-muted">{tr(step.text)}</p>
             </Reveal>
           ))}

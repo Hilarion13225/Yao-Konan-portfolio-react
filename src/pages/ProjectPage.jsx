@@ -74,8 +74,8 @@ export default function ProjectPage() {
       body: (
         <Reveal as="ul" className="flex flex-wrap gap-2">
           {project.stack.map((s) => (
-            <li key={s}>
-              <TechBadge className="px-4 py-2 text-sm">{s}</TechBadge>
+            <li key={tr(s)}>
+              <TechBadge className="px-4 py-2 text-sm">{tr(s)}</TechBadge>
             </li>
           ))}
         </Reveal>

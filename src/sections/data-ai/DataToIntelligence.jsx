@@ -86,7 +86,7 @@ export default function DataToIntelligence({ index }) {
                       isActive ? 'text-fg' : 'text-muted',
                     )}
                   >
-                    {s.title}
+                    {tr(s.title)}
                   </span>
                 </button>
               )
@@ -111,7 +111,7 @@ export default function DataToIntelligence({ index }) {
                 className="grid gap-6 md:grid-cols-12"
               >
                 <p className="font-display text-[clamp(1.75rem,1.2rem+2vw,2.75rem)] font-semibold uppercase leading-none md:col-span-4">
-                  {step.title}
+                  {tr(step.title)}
                 </p>
                 <p className="text-lg text-muted md:col-span-5">{tr(step.text)}</p>
                 <div className="md:col-span-3">
@@ -160,9 +160,9 @@ export default function DataToIntelligence({ index }) {
             {/* Domaines : pratiqué vs en apprentissage */}
             <ul className="grid flex-1 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
               {dataDomains.map((d, i) => (
-                <Reveal as="li" key={d.title} delay={(i % 2) * 0.05} className="flex items-center justify-between gap-4 bg-bg p-6">
+                <Reveal as="li" key={d.title.en} delay={(i % 2) * 0.05} className="flex items-center justify-between gap-4 bg-bg p-6">
                   <div>
-                    <p className="font-display text-lg font-semibold">{d.title}</p>
+                    <p className="font-display text-lg font-semibold">{tr(d.title)}</p>
                     {d.note && <p className="mt-1 font-mono text-xs text-subtle">{d.note}</p>}
                   </div>
                   <span

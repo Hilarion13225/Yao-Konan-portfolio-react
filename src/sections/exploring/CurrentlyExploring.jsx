@@ -22,8 +22,8 @@ export default function CurrentlyExploring({ index }) {
             <p className="mt-2 text-sm text-subtle">{e.experiencedLead}</p>
             <ul className="mt-6 flex flex-wrap gap-2">
               {experienced.map((s) => (
-                <li key={s} className="rounded-full border border-accent/30 bg-accent/[0.06] px-3.5 py-1.5 text-sm">
-                  {s}
+                <li key={tr(s)} className="rounded-full border border-accent/30 bg-accent/[0.06] px-3.5 py-1.5 text-sm">
+                  {tr(s)}
                 </li>
               ))}
             </ul>
@@ -37,8 +37,8 @@ export default function CurrentlyExploring({ index }) {
             <p className="mt-2 text-sm text-subtle">{e.exploringLead}</p>
             <ul className="mt-6 border-t border-dashed border-line-strong">
               {exploring.map((x) => (
-                <li key={x.title} className="grid gap-1 border-b border-dashed border-line-strong py-5 sm:grid-cols-[14rem_1fr] sm:gap-6">
-                  <span className="font-display text-lg font-medium">{x.title}</span>
+                <li key={x.title.en ?? x.title} className="grid gap-1 border-b border-dashed border-line-strong py-5 sm:grid-cols-[14rem_1fr] sm:gap-6">
+                  <span className="font-display text-lg font-medium">{tr(x.title)}</span>
                   <span className="text-sm text-muted">{tr(x.text)}</span>
                 </li>
               ))}

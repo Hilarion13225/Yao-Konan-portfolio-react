@@ -47,7 +47,7 @@ export default function FeaturedProject({ project, index, flip = false }) {
           </div>
           <div className="grid grid-cols-[7.5rem_1fr] gap-4">
             <dt className="eyebrow pt-0.5">{t.projects.tech}</dt>
-            <dd className="text-muted">{project.stack.join(' · ')}</dd>
+            <dd className="text-muted">{project.stack.map(tr).join(' · ')}</dd>
           </div>
           {project.result && (
             <div className="grid grid-cols-[7.5rem_1fr] gap-4">

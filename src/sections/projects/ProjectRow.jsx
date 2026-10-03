@@ -73,7 +73,7 @@ export default function ProjectRow({ project, index }) {
             <dt className="eyebrow">{t.projects.tech}</dt>
             <dd className="mt-3 flex flex-wrap gap-2">
               {project.stack.map((s) => (
-                <TechBadge key={s}>{s}</TechBadge>
+                <TechBadge key={tr(s)}>{tr(s)}</TechBadge>
               ))}
             </dd>
           </div>

@@ -47,7 +47,7 @@ for (const p of projects) {
   <rect width="1200" height="630" fill="#05070A"/>
   <rect width="1200" height="630" fill="url(#grid)"/>
   <rect width="1200" height="630" fill="url(#g)"/>
-  <text x="72" y="92" font-family="Courier New, monospace" font-size="21" letter-spacing="3" fill="#94A3B8">YAO KONAN — CASE STUDY</text>
+  <text x="72" y="92" font-family="Courier New, monospace" font-size="21" letter-spacing="3" fill="#94A3B8">YAO KONAN — ÉTUDE DE CAS</text>
   <text x="72" y="140" font-family="Courier New, monospace" font-size="21" letter-spacing="3" fill="${p.visual.accent}">${esc(fr(p.category).toUpperCase())}</text>
   ${titleLines
     .map((l, i) => `<text x="68" y="${titleTop + i * (size + 4) + size - 10}" font-family="Arial, Helvetica, sans-serif" font-size="${size}" font-weight="700" letter-spacing="-2" fill="#F8FAFC">${esc(l)}</text>`)
@@ -56,7 +56,7 @@ for (const p of projects) {
     .map((l, i) => `<text x="72" y="${afterTitle + 44 + i * 36}" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#CBD5E1">${esc(l)}</text>`)
     .join('\n  ')}
   <rect x="72" y="548" width="44" height="3" fill="${p.visual.accent}"/>
-  <text x="132" y="558" font-family="Courier New, monospace" font-size="20" fill="#94A3B8">${esc(p.stack.slice(0, 5).join(' · '))}</text>
+  <text x="132" y="558" font-family="Courier New, monospace" font-size="20" fill="#94A3B8">${esc(p.stack.slice(0, 5).map(fr).join(' · '))}</text>
 </svg>`
 
   const layers = []

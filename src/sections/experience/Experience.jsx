@@ -42,7 +42,7 @@ export default function Experience({ index }) {
               </ul>
               <div className="mt-5 flex flex-wrap items-center gap-2">
                 {exp.stack.map((s) => (
-                  <TechBadge key={s}>{s}</TechBadge>
+                  <TechBadge key={tr(s)}>{tr(s)}</TechBadge>
                 ))}
                 {exp.project && (
                   <Link to={`/projects/${exp.project}`} className="ml-2 inline-flex items-center gap-1 text-sm text-fg">

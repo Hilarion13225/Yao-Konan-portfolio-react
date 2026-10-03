@@ -1,4 +1,5 @@
 import { cn } from '../../utils/cn.js'
+import { useLanguage } from '../../i18n/LanguageContext.jsx'
 
 // Composition visuelle propre à chaque projet : capture d'écran encadrée
 // ou illustration SVG lorsqu'aucune capture n'existe.
@@ -55,6 +56,7 @@ function Screenshot({ project, eager }) {
 
 // Smartex SustWay : documents → agents IA → score E/S/G → plan d'action.
 function SmartexArt() {
+  const { t } = useLanguage()
   const a = 'var(--p-accent)'
   return (
     <svg viewBox="0 0 640 400" className="h-full w-full transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.03]" fill="none" aria-hidden="true">
@@ -92,20 +94,21 @@ function SmartexArt() {
           <rect x="16" y="2" width={[96, 70, 110][i]} height="6" rx="3" fill={a} opacity={0.5 + i * 0.2} />
         </g>
       ))}
-      <text x="70" y="64" className="fill-subtle font-mono" style={{ fontSize: 11, letterSpacing: '0.14em' }}>EVIDENCE → AGENTS → SCORE → ACTIONS</text>
+      <text x="70" y="64" className="fill-subtle font-mono" style={{ fontSize: 11, letterSpacing: '0.14em' }}>{t.visual.smartex}</text>
     </svg>
   )
 }
 
 // Smart Water Management : capteurs → ESP32 → données → ML → décision.
 function WaterArt() {
+  const { t } = useLanguage()
   const a = 'var(--p-accent)'
   const steps = [
     { x: 70, label: 'pH · TSS' },
     { x: 200, label: 'ESP32' },
     { x: 330, label: 'MongoDB' },
     { x: 460, label: 'ML' },
-    { x: 580, label: 'DECIDE' },
+    { x: 580, label: t.visual.decide },
   ]
   return (
     <svg viewBox="0 0 640 400" className="h-full w-full transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.03]" fill="none" aria-hidden="true">
@@ -132,7 +135,7 @@ function WaterArt() {
       {[40, 70, 100].map((x, i) => (
         <path key={x} d={`M${x} ${92 + i * 6} c -7 10 -10 15 -10 20 a 10 10 0 0 0 20 0 c 0 -5 -3 -10 -10 -20 z`} stroke={a} opacity={0.4 + i * 0.25} />
       ))}
-      <text x="440" y="96" className="fill-subtle font-mono" style={{ fontSize: 11, letterSpacing: '0.14em' }}>IoT + DATA + AI</text>
+      <text x="440" y="96" className="fill-subtle font-mono" style={{ fontSize: 11, letterSpacing: '0.14em' }}>{t.visual.water}</text>
     </svg>
   )
 }

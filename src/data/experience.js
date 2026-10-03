@@ -12,7 +12,7 @@ export const experiences = [
       { fr: "Interface utilisateur avec Next.js (React), base de données PostgreSQL.", en: 'User interface with Next.js (React), PostgreSQL database.' },
       { fr: 'Authentification, gestion des rôles et tests des endpoints avec Postman.', en: 'Authentication, role management and endpoint testing with Postman.' },
     ],
-    stack: ['Laravel', 'Next.js', 'PostgreSQL', 'REST API', 'Postman'],
+    stack: ['Laravel', 'Next.js', 'PostgreSQL', { fr: 'API REST', en: 'REST API' }, 'Postman'],
     project: 'electoral-sponsorship',
   },
   {

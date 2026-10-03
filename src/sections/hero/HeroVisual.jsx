@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { m, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion'
 import { useFinePointer } from '../../hooks/useMediaQuery.js'
 import Portrait from '../../components/common/Portrait.jsx'
+import { useLanguage } from '../../i18n/LanguageContext.jsx'
 import { cn } from '../../utils/cn.js'
 
 // Le portrait au centre d'un système : CODE, DATA et AI convergent, PRODUCTS en sort.
@@ -11,10 +12,10 @@ const CY = 215
 const R = 182
 
 const NODES = [
-  { id: 'data', label: 'DATA', x: CX, y: CY - R, path: `M${CX} ${CY - R + 16} V${CY - R + 62}` },
-  { id: 'code', label: 'CODE', x: CX - R, y: CY, path: `M${CX - R + 30} ${CY} H${CX - R + 76}` },
-  { id: 'ai', label: 'AI', x: CX + R, y: CY, path: `M${CX + R - 24} ${CY} H${CX + R - 70}` },
-  { id: 'products', label: 'PRODUCTS', x: CX, y: CY + R + 58, path: `M${CX} ${CY + R - 6} V${CY + R + 42}`, out: true },
+  { id: 'data', x: CX, y: CY - R, path: `M${CX} ${CY - R + 16} V${CY - R + 62}` },
+  { id: 'code', x: CX - R, y: CY, path: `M${CX - R + 30} ${CY} H${CX - R + 76}` },
+  { id: 'ai', x: CX + R, y: CY, path: `M${CX + R - 24} ${CY} H${CX + R - 70}` },
+  { id: 'products', x: CX, y: CY + R + 58, path: `M${CX} ${CY + R - 6} V${CY + R + 42}`, out: true },
 ]
 
 // Technologies réellement utilisées, posées sur l'orbite.
@@ -29,6 +30,7 @@ const SATELLITES = [
 const polar = (deg, r = R) => [CX + r * Math.cos((deg * Math.PI) / 180), CY + r * Math.sin((deg * Math.PI) / 180)]
 
 export default function HeroVisual({ className }) {
+  const { t } = useLanguage()
   const reduce = useReducedMotion()
   const fine = useFinePointer()
   const mx = useMotionValue(0)
@@ -108,7 +110,8 @@ export default function HeroVisual({ className }) {
         })}
 
         {NODES.map((n, i) => {
-          const w = n.label.length * 8 + 24
+          const label = t.visual[n.id]
+          const w = label.length * 8 + 24
           const color = n.out ? 'var(--cyan)' : 'var(--accent)'
           return (
             <g key={n.id}>
@@ -120,7 +123,7 @@ export default function HeroVisual({ className }) {
               )}
               <rect x={n.x - w / 2} y={n.y - 13} width={w} height="26" rx="13" fill="var(--bg)" stroke="var(--line-strong)" />
               <text x={n.x} y={n.y + 4} textAnchor="middle" className="fill-fg font-mono" style={{ fontSize: 10, letterSpacing: '0.14em' }}>
-                {n.label}
+                {label}
               </text>
             </g>
           )

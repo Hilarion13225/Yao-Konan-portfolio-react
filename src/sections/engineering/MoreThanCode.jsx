@@ -16,7 +16,7 @@ export default function MoreThanCode({ index }) {
           {principles.map((p, i) => (
             <Reveal
               as="li"
-              key={p.title}
+              key={p.title.en ?? p.title}
               delay={(i % 4) * 0.05}
               className="group relative border-b border-r border-line p-7 transition-colors duration-500 hover:bg-surface md:p-8"
             >
@@ -25,7 +25,7 @@ export default function MoreThanCode({ index }) {
                 className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-gradient-to-r from-accent to-cyan transition-transform duration-500 group-hover:scale-x-100"
               />
               <p className="font-mono text-xs text-subtle">{pad(i + 1)}</p>
-              <h3 className="mt-8 font-display text-xl font-semibold">{p.title}</h3>
+              <h3 className="mt-8 font-display text-xl font-semibold">{tr(p.title)}</h3>
               <p className="mt-3 text-sm text-muted">{tr(p.text)}</p>
             </Reveal>
           ))}

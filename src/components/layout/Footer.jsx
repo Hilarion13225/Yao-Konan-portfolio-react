@@ -12,7 +12,7 @@ export default function Footer() {
       <div className="container-page grid gap-10 py-14 md:grid-cols-12 md:items-end">
         <div className="md:col-span-5">
           <p className="font-display text-2xl font-semibold uppercase tracking-[0.1em]">Yao Konan</p>
-          <p className="mt-2 text-sm text-muted">Full-Stack Developer · Data &amp; AI</p>
+          <p className="mt-2 text-sm text-muted">{t.footerRole}</p>
         </div>
         <ul className="flex flex-wrap gap-x-6 gap-y-3 text-sm md:col-span-5">
           {links.map((s) => (

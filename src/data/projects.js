@@ -42,7 +42,7 @@ export const projects = [
       layers: [
         { label: { fr: 'Interface', en: 'Interface' }, items: ['React', 'Vite', 'Tailwind CSS'] },
         { label: { fr: 'API métier', en: 'Business API' }, items: ['Java', 'Quarkus', 'REST API'] },
-        { label: { fr: 'Services IA', en: 'AI services' }, items: ['Python', 'FastAPI', 'Multi-agent AI'] },
+        { label: { fr: 'Services IA', en: 'AI services' }, items: ['Python', 'FastAPI', { fr: 'IA multi-agents', en: 'Multi-agent AI' }] },
         { label: { fr: 'Données', en: 'Data' }, items: ['PostgreSQL'] },
       ],
     },
@@ -57,7 +57,7 @@ export const projects = [
       { fr: 'Préparation au financement', en: 'Financing readiness' },
       { fr: 'IA multi-agents', en: 'Multi-agent AI' },
     ],
-    stack: ['React', 'Vite', 'Tailwind CSS', 'Java', 'Quarkus', 'PostgreSQL', 'Python', 'FastAPI', 'REST API', 'AI'],
+    stack: ['React', 'Vite', 'Tailwind CSS', 'Java', 'Quarkus', 'PostgreSQL', 'Python', 'FastAPI', { fr: 'API REST', en: 'REST API' }, { fr: 'IA', en: 'AI' }],
     contribution: [
       { fr: 'Analyse fonctionnelle et conception de l’architecture globale', en: 'Functional analysis and overall architecture design' },
       { fr: 'Interface React / Vite / Tailwind CSS et intégration des API', en: 'React / Vite / Tailwind CSS interface and API integration' },
@@ -75,7 +75,7 @@ export const projects = [
     slug: 'electoral-sponsorship',
     featured: true,
     category: { fr: 'Full-Stack · Secteur public', en: 'Full-Stack · Public sector' },
-    title: 'Electoral Sponsorship Management',
+    title: { fr: 'Gestion du parrainage électoral', en: 'Electoral Sponsorship Management' },
     tagline: {
       fr: 'Digitalisation du parrainage électoral — CEI',
       en: 'Digitalising electoral sponsorship — CEI',
@@ -102,7 +102,7 @@ export const projects = [
       type: 'layers',
       layers: [
         { label: { fr: 'Interface', en: 'Interface' }, items: ['Next.js', 'React', 'Tailwind CSS'] },
-        { label: { fr: 'API', en: 'API' }, items: ['Laravel', 'REST API', { fr: 'Authentification & rôles', en: 'Auth & roles' }] },
+        { label: { fr: 'API', en: 'API' }, items: ['Laravel', { fr: 'API REST', en: 'REST API' }, { fr: 'Authentification & rôles', en: 'Auth & roles' }] },
         { label: { fr: 'Données', en: 'Data' }, items: ['PostgreSQL'] },
       ],
     },
@@ -114,7 +114,7 @@ export const projects = [
       { fr: 'Authentification et gestion des rôles', en: 'Authentication and role management' },
       { fr: 'Recherche par numéro d’électeur', en: 'Search by voter number' },
     ],
-    stack: ['Laravel', 'Next.js', 'Tailwind CSS', 'PostgreSQL', 'REST API', 'Postman'],
+    stack: ['Laravel', 'Next.js', 'Tailwind CSS', 'PostgreSQL', { fr: 'API REST', en: 'REST API' }, 'Postman'],
     contribution: [
       { fr: 'Analyse des besoins', en: 'Requirements analysis' },
       { fr: 'Conception et implémentation du backend Laravel et de son API REST', en: 'Design and implementation of the Laravel backend and its REST API' },
@@ -133,8 +133,8 @@ export const projects = [
   {
     slug: 'smart-water-management',
     featured: true,
-    category: { fr: 'IoT · Data · IA', en: 'IoT · Data · AI' },
-    title: 'Smart Water Management',
+    category: { fr: 'IoT · Données · IA', en: 'IoT · Data · AI' },
+    title: { fr: 'Gestion intelligente de l’eau', en: 'Smart Water Management' },
     tagline: {
       fr: "Recyclage et gestion intelligente de l'eau — 1re place, Technovore Hackathon 2025",
       en: 'Smart water recycling & management — 1st place, Technovore Hackathon 2025',
@@ -160,7 +160,7 @@ export const projects = [
     architecture: {
       type: 'flow',
       layers: [
-        { label: { fr: 'Capteurs', en: 'Sensors' }, items: ['pH', { fr: 'Niveau', en: 'Level' }, 'Turbidity / TSS'] },
+        { label: { fr: 'Capteurs', en: 'Sensors' }, items: ['pH', { fr: 'Niveau', en: 'Level' }, { fr: 'Turbidité / TSS', en: 'Turbidity / TSS' }] },
         { label: { fr: 'Collecte', en: 'Collection' }, items: ['ESP32'] },
         { label: { fr: 'Base de données', en: 'Database' }, items: ['MongoDB'] },
         { label: { fr: 'Analyse', en: 'Analysis' }, items: ['Python', 'Django'] },
@@ -175,7 +175,7 @@ export const projects = [
       { fr: 'Analyse et Machine Learning pour l’aide à la décision', en: 'Analysis and Machine Learning for decision support' },
       { fr: 'Réorientation de l’eau : agriculture ou purification', en: 'Water routing: agriculture or purification' },
     ],
-    stack: ['ESP32', 'Sensors', 'Python', 'Django', 'MongoDB', 'Machine Learning'],
+    stack: ['ESP32', { fr: 'Capteurs', en: 'Sensors' }, 'Python', 'Django', 'MongoDB', 'Machine Learning'],
     contribution: [
       { fr: 'Développement IoT et backend du système', en: 'IoT and backend development of the system' },
     ],
@@ -210,7 +210,7 @@ export const projects = [
       en: 'The Ivorian tourism offering (sites, tours, events, crafts, accommodation, dining) is scattered across many actors.',
     },
     solution: {
-      fr: 'Une plateforme unique pour 8 profils d’acteurs : authentification JWT, certification blockchain des billets et produits (mode on-chain / off-chain), dashboards analytics par rôle et assistant conversationnel pour guider les touristes.',
+      fr: 'Une plateforme unique pour 8 profils d’acteurs : authentification JWT, certification blockchain des billets et produits (mode on-chain / off-chain), tableaux de bord analytiques par rôle et assistant conversationnel pour guider les touristes.',
       en: 'A single platform for 8 actor profiles: JWT authentication, blockchain certification of tickets and products (on-chain / off-chain mode), role-based analytics dashboards and a chatbot assistant to guide tourists.',
     },
     architecture: {
@@ -267,7 +267,7 @@ export const projects = [
       { fr: 'Scoring sémantique', en: 'Semantic scoring' },
       { fr: 'Classement automatique des candidats', en: 'Automatic candidate ranking' },
     ],
-    stack: ['AI', 'NLP', 'React', 'Next.js'],
+    stack: [{ fr: 'IA', en: 'AI' }, 'NLP', 'React', 'Next.js'],
     contribution: [],
     result: null,
     challenges: [],
