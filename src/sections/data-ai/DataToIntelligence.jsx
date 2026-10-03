@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { AnimatePresence, motion, useInView, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, m, useInView, useReducedMotion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import { dataDomains, dataPipeline } from '../../data/approach.js'
 import { getProject } from '../../data/projects.js'
@@ -34,17 +34,20 @@ export default function DataToIntelligence({ index }) {
 
   return (
     <section id="data-ai" className="relative isolate overflow-hidden border-t border-line py-28 md:py-40">
-      <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-[70%] bg-[radial-gradient(60%_60%_at_50%_0%,var(--glow),transparent_70%)]" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 -z-10 h-[70%] bg-[radial-gradient(60%_60%_at_50%_0%,var(--glow),transparent_70%)]"
+      />
       <div className="container-page">
         <SectionHeader index={index} label={t.dataAi.label} title={t.dataAi.title} lead={t.dataAi.lead} />
 
-        <div ref={ref} className="rounded-3xl border border-line bg-surface/60 p-5 backdrop-blur-sm sm:p-8 md:p-12">
+        <div ref={ref} className="rounded-3xl border border-line bg-surface/80 p-5 sm:p-8 md:p-12">
           <p className="eyebrow mb-6">{t.dataAi.hint}</p>
 
           {/* Étapes */}
           <div role="tablist" aria-label={t.dataAi.title} className="relative grid grid-cols-4 gap-y-6 sm:grid-cols-7">
             <span aria-hidden="true" className="absolute left-[7%] right-[7%] top-[19px] hidden h-px bg-line sm:block" />
-            <motion.span
+            <m.span
               aria-hidden="true"
               className="absolute left-[7%] top-[19px] hidden h-px bg-gradient-to-r from-accent to-cyan sm:block"
               animate={{ width: `${(active / (dataPipeline.length - 1)) * 86}%` }}
@@ -69,7 +72,7 @@ export default function DataToIntelligence({ index }) {
                     className={cn(
                       'grid size-10 place-items-center rounded-full border font-mono text-[0.7rem] transition-all duration-300',
                       isActive
-                        ? 'border-accent bg-accent text-white shadow-[0_0_0_6px_var(--glow)]'
+                        ? 'border-accent-strong bg-accent-strong text-white shadow-[0_0_0_6px_var(--glow)]'
                         : done
                           ? 'border-accent/60 bg-bg text-fg'
                           : 'border-line-strong bg-bg text-subtle group-hover:border-fg/50',
@@ -77,7 +80,12 @@ export default function DataToIntelligence({ index }) {
                   >
                     {pad(i + 1)}
                   </span>
-                  <span className={cn('font-display text-sm font-semibold uppercase tracking-[0.08em] transition-colors', isActive ? 'text-fg' : 'text-muted')}>
+                  <span
+                    className={cn(
+                      'font-display text-sm font-semibold uppercase tracking-[0.08em] transition-colors',
+                      isActive ? 'text-fg' : 'text-muted',
+                    )}
+                  >
                     {s.title}
                   </span>
                 </button>
@@ -86,9 +94,15 @@ export default function DataToIntelligence({ index }) {
           </div>
 
           {/* Détail de l'étape */}
-          <div id="dp-panel" role="tabpanel" aria-labelledby={`dp-tab-${step.key}`} aria-live="polite" className="mt-10 min-h-[9rem] border-t border-line pt-8">
+          <div
+            id="dp-panel"
+            role="tabpanel"
+            aria-labelledby={`dp-tab-${step.key}`}
+            aria-live="polite"
+            className="mt-10 min-h-[9rem] border-t border-line pt-8"
+          >
             <AnimatePresence mode="wait">
-              <motion.div
+              <m.div
                 key={step.key}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -111,7 +125,7 @@ export default function DataToIntelligence({ index }) {
                     <p className="text-sm text-subtle">{t.dataAi.notYet}</p>
                   )}
                 </div>
-              </motion.div>
+              </m.div>
             </AnimatePresence>
           </div>
         </div>
@@ -133,7 +147,9 @@ export default function DataToIntelligence({ index }) {
             <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#05070A]/90 via-[#05070A]/10 to-transparent" />
             <figcaption className="absolute inset-x-0 bottom-0 p-6 text-white">
               <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-white/70">BIHAR</p>
-              <p className="mt-2 font-display text-xl font-semibold leading-tight md:text-2xl">Big Data Intelligence for Human Augmented Reality</p>
+              <p className="mt-2 font-display text-xl font-semibold leading-tight md:text-2xl">
+                Big Data Intelligence for Human Augmented Reality
+              </p>
             </figcaption>
           </Reveal>
 
@@ -141,25 +157,25 @@ export default function DataToIntelligence({ index }) {
             <Reveal as="p" className="font-display text-[clamp(1.4rem,1rem+1.4vw,2.1rem)] font-medium leading-snug">
               {t.dataAi.manifesto}
             </Reveal>
-        {/* Domaines : pratiqué vs en apprentissage */}
-        <ul className="grid flex-1 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
-          {dataDomains.map((d, i) => (
-            <Reveal as="li" key={d.title} delay={(i % 2) * 0.05} className="flex items-center justify-between gap-4 bg-bg p-6">
-              <div>
-                <p className="font-display text-lg font-semibold">{d.title}</p>
-                {d.note && <p className="mt-1 font-mono text-xs text-subtle">{d.note}</p>}
-              </div>
-              <span
-                className={cn(
-                  'shrink-0 rounded-full border px-2.5 py-1 font-mono text-[0.68rem] uppercase tracking-wider',
-                  d.status === 'practiced' ? 'border-accent/40 text-accent' : 'border-line-strong text-muted',
-                )}
-              >
-                {d.status === 'practiced' ? t.dataAi.practiced : t.dataAi.learning}
-              </span>
-            </Reveal>
-          ))}
-        </ul>
+            {/* Domaines : pratiqué vs en apprentissage */}
+            <ul className="grid flex-1 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
+              {dataDomains.map((d, i) => (
+                <Reveal as="li" key={d.title} delay={(i % 2) * 0.05} className="flex items-center justify-between gap-4 bg-bg p-6">
+                  <div>
+                    <p className="font-display text-lg font-semibold">{d.title}</p>
+                    {d.note && <p className="mt-1 font-mono text-xs text-subtle">{d.note}</p>}
+                  </div>
+                  <span
+                    className={cn(
+                      'shrink-0 rounded-full border px-2.5 py-1 font-mono text-[0.68rem] uppercase tracking-wider',
+                      d.status === 'practiced' ? 'border-accent/40 text-accent' : 'border-line-strong text-muted',
+                    )}
+                  >
+                    {d.status === 'practiced' ? t.dataAi.practiced : t.dataAi.learning}
+                  </span>
+                </Reveal>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

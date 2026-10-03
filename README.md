@@ -11,9 +11,9 @@ React Hook Form + Zod. JavaScript uniquement, aucun backend.
 ```bash
 npm install
 npm run dev       # développement — http://localhost:5173
-npm run build     # build de production dans dist/ (régénère aussi le sitemap)
+npm run build     # build de production dans dist/ (sitemap + pages projet pré-générées pour le SEO)
 npm run preview   # sert le build localement
-npm run images    # régénère les images optimisées (WebP), l'image Open Graph et l'icône Apple
+npm run images    # régénère les images WebP, les images Open Graph (site + une par projet) et l'icône Apple
 ```
 
 ## Modifier le contenu
@@ -54,4 +54,5 @@ src/
 
 ## Déploiement
 
-Vercel : `vercel.json` redirige toutes les routes vers `index.html` (routing côté client).
+Vercel : `vercel.json` active `cleanUrls` (sert `dist/projects/<slug>.html`, qui porte les métadonnées
+de chaque projet) et redirige les autres routes vers `index.html` (routing côté client).

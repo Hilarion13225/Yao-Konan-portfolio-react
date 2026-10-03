@@ -69,6 +69,10 @@
   --animate-marquee: marquee var(--marquee-duration, 48s) linear infinite;
   --animate-flow: flow 2.4s linear infinite;
   --animate-pulse-soft: pulse-soft 2.4s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in: fade-in 1.2s ease-out both;
+  --animate-drift: drift 18s ease-in-out infinite;
+  --animate-orbit: orbit 60s linear infinite;
 
   @keyframes marquee {
     from { transform: translateX(0); }
@@ -76,6 +80,18 @@
   }
   @keyframes flow {
     to { stroke-dashoffset: -24; }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+  }
+  @keyframes drift {
+    50% { transform: translate(-40px, 30px); }
+  }
+  @keyframes orbit {
+    to { transform: rotate(360deg); }
   }
   @keyframes pulse-soft {
     0%, 100% { opacity: 1; transform: scale(1); }
@@ -161,8 +177,67 @@
   &:hover, &:focus-visible { background-size: 100% 1px; }
 }
 
+/* Couleur propre à un projet (--p-accent), assombrie en thème clair pour garder le contraste */
+@utility text-project {
+  color: var(--p-accent);
+  &:where([data-theme='light'] *) {
+    color: color-mix(in srgb, var(--p-accent) 50%, #0b1220);
+  }
+}
+
 @utility mask-fade-x {
   mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+/* Apparition au scroll (composant Reveal) */
+.reveal {
+  opacity: 0;
+  transform: translateY(var(--reveal-y, 24px));
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Révélation mot par mot (composant AnimatedText) */
+.split-word {
+  display: inline-block;
+  transform: translateY(110%);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--word-delay, 0s);
+}
+.is-visible .split-word {
+  transform: none;
+}
+
+/* Animations pilotées par le scroll (CSS) — amélioration progressive */
+.scroll-progress { transform: scaleX(0); }
+.draw-y { transform: scaleY(0); }
+.draw-x { transform: scaleX(0); }
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    animation: grow-x linear both;
+    animation-timeline: scroll(root);
+  }
+  .draw-on-scroll { view-timeline-name: --steps; }
+  .draw-y, .draw-x {
+    animation: var(--draw) linear both;
+    animation-timeline: --steps;
+    animation-range: entry 20% exit 40%;
+  }
+  .draw-y { --draw: grow-y; }
+  .draw-x { --draw: grow-x; }
+}
+@supports not (animation-timeline: scroll()) {
+  .scroll-progress { display: none; }
+  .draw-y, .draw-x { transform: none; }
+}
+@keyframes grow-x { to { transform: scaleX(1); } }
+@keyframes grow-y { to { transform: scaleY(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .draw-y, .draw-x { animation: none; transform: none; }
 }
 
 /* Grain très léger pour donner de la matière aux surfaces sombres */
@@ -183,6 +258,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .reveal, .split-word { opacity: 1; transform: none; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import { navItems, site, socials } from '../../config/site.js'
 import { useLanguage } from '../../i18n/LanguageContext.jsx'
@@ -30,7 +30,7 @@ export default function MobileMenu({ open, onClose }) {
   return (
     <AnimatePresence>
       {open && (
-        <motion.div
+        <m.div
           id="mobile-menu"
           ref={panelRef}
           className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-bg px-5 pb-8 pt-24 lg:hidden"
@@ -43,7 +43,7 @@ export default function MobileMenu({ open, onClose }) {
           <nav aria-label={t.nav.primary} className="relative flex-1">
             <ul className="flex flex-col">
               {navItems.map((item, i) => (
-                <motion.li
+                <m.li
                   key={item.id}
                   className="border-b border-line"
                   initial={{ opacity: 0, y: 24 }}
@@ -56,11 +56,11 @@ export default function MobileMenu({ open, onClose }) {
                       {tr(item.label)}
                     </span>
                   </Link>
-                </motion.li>
+                </m.li>
               ))}
             </ul>
           </nav>
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -76,8 +76,8 @@ export default function MobileMenu({ open, onClose }) {
                   <SocialLink key={s.key} social={s} />
                 ))}
             </div>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       )}
     </AnimatePresence>
   )

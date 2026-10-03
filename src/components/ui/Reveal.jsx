@@ -1,17 +1,16 @@
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { useInViewOnce } from '../../hooks/useInViewOnce.js'
+import { cn } from '../../utils/cn.js'
 
-const EASE = [0.22, 1, 0.36, 1]
-
-// Apparition douce au scroll (désactivée automatiquement en reduced motion via MotionConfig).
-export default function Reveal({ as = 'div', delay = 0, y = 24, className, children, ...props }) {
-  const Tag = motion[as] ?? motion.div
+// Apparition douce au scroll, en CSS (voir .reveal dans styles/index.css).
+export default function Reveal({ as: Tag = 'div', delay = 0, y = 24, className, style, children, ...props }) {
+  const ref = useRef(null)
+  const visible = useInViewOnce(ref)
   return (
     <Tag
-      className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '0px 0px -10% 0px' }}
-      transition={{ duration: 0.8, ease: EASE, delay }}
+      ref={ref}
+      className={cn('reveal', visible && 'is-visible', className)}
+      style={{ '--reveal-delay': `${delay}s`, '--reveal-y': `${y}px`, ...style }}
       {...props}
     >
       {children}

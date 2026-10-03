@@ -1,13 +1,12 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion'
+import { m, useMotionValue, useReducedMotion, useSpring } from 'framer-motion'
 import { useFinePointer } from '../../hooks/useMediaQuery.js'
 import { cn } from '../../utils/cn.js'
 
 const VARIANTS = {
-  primary:
-    'bg-fg text-bg hover:bg-accent hover:text-white shadow-[0_0_0_1px_var(--line)]',
-  accent: 'bg-accent text-white hover:bg-accent-strong',
+  primary: 'bg-fg text-bg hover:bg-accent hover:text-white shadow-[0_0_0_1px_var(--line)]',
+  accent: 'bg-accent-strong text-white hover:bg-[#1d4ed8]',
   ghost: 'border border-line-strong text-fg hover:border-fg/60 hover:bg-fg/[0.04]',
 }
 const SIZES = {
@@ -15,7 +14,7 @@ const SIZES = {
   sm: 'h-10 px-4 text-sm',
 }
 
-const MotionLink = motion.create(Link)
+const MotionLink = m.create(Link)
 
 // Bouton / lien avec un léger effet magnétique sur desktop.
 export default function Button({ to, href, variant = 'primary', size = 'md', magnetic = true, className, children, ...props }) {
@@ -44,16 +43,31 @@ export default function Button({ to, href, variant = 'primary', size = 'md', mag
     SIZES[size],
     className,
   )
-  const shared = { ref, className: classes, style: { x, y }, onPointerMove: onMove, onPointerLeave: onLeave, 'data-cursor': 'hover', ...props }
+  // Sans effet magnétique (tactile, mouvement réduit), on rend un élément HTML simple : plus léger.
+  const shared = active
+    ? { ref, className: classes, style: { x, y }, onPointerMove: onMove, onPointerLeave: onLeave, 'data-cursor': 'hover', ...props }
+    : { className: classes, ...props }
+  const LinkTag = active ? MotionLink : Link
+  const ATag = active ? m.a : 'a'
+  const ButtonTag = active ? m.button : 'button'
 
-  if (to) return <MotionLink to={to} {...shared}>{children}</MotionLink>
+  if (to)
+    return (
+      <LinkTag to={to} {...shared}>
+        {children}
+      </LinkTag>
+    )
   if (href) {
     const external = /^https?:/.test(href)
     return (
-      <motion.a href={href} {...(external && { target: '_blank', rel: 'noreferrer' })} {...shared}>
+      <ATag href={href} {...(external && { target: '_blank', rel: 'noreferrer' })} {...shared}>
         {children}
-      </motion.a>
+      </ATag>
     )
   }
-  return <motion.button type="button" {...shared}>{children}</motion.button>
+  return (
+    <ButtonTag type="button" {...shared}>
+      {children}
+    </ButtonTag>
+  )
 }

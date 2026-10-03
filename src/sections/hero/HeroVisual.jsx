@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion'
+import { m, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion'
 import { useFinePointer } from '../../hooks/useMediaQuery.js'
 import Portrait from '../../components/common/Portrait.jsx'
 import { cn } from '../../utils/cn.js'
@@ -53,29 +53,23 @@ export default function HeroVisual({ className }) {
   return (
     <div className={cn('relative aspect-[4/5] w-full', className)}>
       {/* Halo */}
-      <div aria-hidden="true" className="absolute inset-[8%] rounded-full bg-[radial-gradient(circle,var(--glow),transparent_68%)] blur-2xl" />
+      <div aria-hidden="true" className="absolute inset-[8%] rounded-full bg-[radial-gradient(circle,var(--glow),transparent_68%)]" />
 
       {/* Portrait, fondu dans l'arrière-plan */}
-      <motion.div
+      <m.div
         style={{ x: photoX, y: photoY }}
-        initial={{ opacity: 0, scale: 1.04 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-        className="absolute inset-x-[9%] bottom-[6%] top-[3%] [mask-image:radial-gradient(ellipse_54%_60%_at_50%_40%,#000_50%,transparent_92%)]"
+        className="absolute animate-fade-in inset-x-[9%] bottom-[6%] top-[3%] [mask-image:radial-gradient(ellipse_54%_60%_at_50%_40%,#000_50%,transparent_92%)]"
       >
         <Portrait eager className="h-full w-full object-cover object-[50%_18%]" />
-      </motion.div>
+      </m.div>
 
       {/* Réseau en orbite */}
-      <motion.svg
+      <m.svg
         aria-hidden="true"
         viewBox="0 0 400 500"
         fill="none"
-        style={{ x: netX, y: netY }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, delay: 0.7 }}
-        className="absolute inset-0 h-full w-full overflow-visible"
+        style={{ x: netX, y: netY, animationDelay: '0.5s' }}
+        className="absolute inset-0 animate-fade-in h-full w-full overflow-visible"
       >
         <defs>
           <linearGradient id="hv-ring" x1="0" y1="0" x2="1" y2="1">
@@ -89,13 +83,10 @@ export default function HeroVisual({ className }) {
         <circle cx={CX} cy={CY} r={R + 22} stroke="var(--line)" strokeDasharray="2 7" />
 
         {/* Point qui parcourt l'orbite */}
-        <motion.g
-          animate={reduce ? undefined : { rotate: 360 }}
-          transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
-        >
+        <g className="origin-center animate-orbit [transform-box:fill-box] motion-reduce:animate-none">
           <circle cx={CX} cy={CY} r={R + 22} fill="none" />
           <circle cx={CX + R + 22} cy={CY} r="2.5" fill="var(--cyan)" />
-        </motion.g>
+        </g>
 
         {SATELLITES.map((s) => {
           const [x, y] = polar(s.angle)
@@ -134,7 +125,7 @@ export default function HeroVisual({ className }) {
             </g>
           )
         })}
-      </motion.svg>
+      </m.svg>
     </div>
   )
 }

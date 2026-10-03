@@ -23,7 +23,7 @@ export default function FeaturedProject({ project, index, flip = false }) {
 
       <div className={cn('md:col-span-5', flip && 'md:order-1')}>
         <Reveal as="p" className="eyebrow flex flex-wrap items-center gap-x-3 gap-y-1">
-          <span style={{ color: project.visual.accent }}>{pad(index)}</span>
+          <span className="text-project" style={{ '--p-accent': project.visual.accent }}>{pad(index)}</span>
           <span aria-hidden="true">/</span>
           <span>{tr(project.category)}</span>
         </Reveal>

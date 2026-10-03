@@ -81,7 +81,7 @@ export default function Contact({ index }) {
           </Reveal>
 
           <Reveal delay={0.1} className="lg:col-span-7 lg:col-start-6">
-            <div className="rounded-3xl border border-line bg-surface/70 p-6 backdrop-blur sm:p-10">
+            <div className="rounded-3xl border border-line bg-surface/90 p-6 sm:p-10">
               <Suspense fallback={<div className="min-h-[26rem]" />}>
                 <ContactForm />
               </Suspense>

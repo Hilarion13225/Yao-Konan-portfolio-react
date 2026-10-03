@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion'
+import { AnimatePresence, m, useMotionValue, useReducedMotion, useSpring } from 'framer-motion'
 import { useFinePointer } from '../../hooks/useMediaQuery.js'
 import { useLanguage } from '../../i18n/LanguageContext.jsx'
 
@@ -53,7 +53,7 @@ function CursorInner() {
 
   return (
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-[100]">
-      <motion.div
+      <m.div
         className="absolute left-0 top-0 grid -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-fg/40"
         style={{ x: rx, y: ry, backgroundColor: mode === 'view' ? 'var(--fg)' : 'transparent' }}
         animate={ring}
@@ -61,18 +61,18 @@ function CursorInner() {
       >
         <AnimatePresence>
           {mode === 'view' && (
-            <motion.span
+            <m.span
               initial={{ opacity: 0, scale: 0.6 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.6 }}
               className="font-mono text-[0.7rem] uppercase tracking-widest text-bg"
             >
               {lang === 'fr' ? 'Voir' : 'View'}
-            </motion.span>
+            </m.span>
           )}
         </AnimatePresence>
-      </motion.div>
-      <motion.div
+      </m.div>
+      <m.div
         className="absolute left-0 top-0 size-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-fg"
         style={{ x, y }}
         animate={{ opacity: mode === 'hidden' || mode === 'view' || mode === 'text' ? 0 : 1 }}

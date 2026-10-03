@@ -140,7 +140,7 @@ export default function ProjectPage() {
         </Reveal>
 
         <p className="eyebrow mt-12 flex flex-wrap items-center gap-3">
-          <span style={{ color: project.visual.accent }}>{pad(position + 1)}</span>
+          <span className="text-project" style={{ '--p-accent': project.visual.accent }}>{pad(position + 1)}</span>
           <span aria-hidden="true">/</span>
           {tr(project.category)}
         </p>

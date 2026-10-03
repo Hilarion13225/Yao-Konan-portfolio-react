@@ -25,7 +25,7 @@ export default function ArchitectureDiagram({ architecture, accent }) {
             )}
           >
             <p className="flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-subtle">
-              <span style={{ color: accent }}>{pad(i + 1)}</span>
+              <span className="text-project">{pad(i + 1)}</span>
               {tr(layer.label)}
             </p>
             <ul className="mt-3 flex flex-wrap gap-1.5 sm:mt-0 sm:justify-end">

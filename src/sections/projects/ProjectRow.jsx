@@ -15,7 +15,9 @@ export default function ProjectRow({ project, index }) {
     <Reveal as="article" className="group relative grid gap-8 border-b border-line py-12 md:grid-cols-12 md:gap-10">
       <div className="md:col-span-4">
         <p className="eyebrow flex items-center gap-3">
-          <span style={{ color: project.visual.accent }}>{pad(index)}</span>
+          <span className="text-project" style={{ '--p-accent': project.visual.accent }}>
+            {pad(index)}
+          </span>
           <span aria-hidden="true">/</span>
           <span>{tr(project.category)}</span>
         </p>
@@ -47,52 +49,64 @@ export default function ProjectRow({ project, index }) {
         )}
       </div>
 
-      <dl className="grid gap-6 text-sm sm:grid-cols-2 md:col-span-8 md:gap-x-10">
-        <div>
-          <dt className="eyebrow">{t.projects.problem}</dt>
-          <dd className="mt-2 text-muted">{tr(project.problem)}</dd>
-        </div>
-        <div>
-          <dt className="eyebrow">{t.projects.solution}</dt>
-          <dd className="mt-2 text-muted">{tr(project.solution)}</dd>
-        </div>
-        <div>
-          <dt className="eyebrow">{t.projects.role}</dt>
-          <dd className="mt-2">{tr(project.role)}</dd>
-        </div>
-        {project.result && (
+      <div className="grid gap-6 text-sm md:col-span-8">
+        <dl className="grid gap-6 sm:grid-cols-2 sm:gap-x-10">
           <div>
-            <dt className="eyebrow">{t.projects.result}</dt>
-            <dd className="mt-2">{tr(project.result)}</dd>
+            <dt className="eyebrow">{t.projects.problem}</dt>
+            <dd className="mt-2 text-muted">{tr(project.problem)}</dd>
           </div>
-        )}
-        <div className="sm:col-span-2">
-          <dt className="eyebrow">{t.projects.tech}</dt>
-          <dd className="mt-3 flex flex-wrap gap-2">
-            {project.stack.map((s) => (
-              <TechBadge key={s}>{s}</TechBadge>
-            ))}
-          </dd>
-        </div>
-        <div className="flex flex-wrap gap-x-6 gap-y-3 sm:col-span-2">
+          <div>
+            <dt className="eyebrow">{t.projects.solution}</dt>
+            <dd className="mt-2 text-muted">{tr(project.solution)}</dd>
+          </div>
+          <div>
+            <dt className="eyebrow">{t.projects.role}</dt>
+            <dd className="mt-2">{tr(project.role)}</dd>
+          </div>
+          {project.result && (
+            <div>
+              <dt className="eyebrow">{t.projects.result}</dt>
+              <dd className="mt-2">{tr(project.result)}</dd>
+            </div>
+          )}
+          <div className="sm:col-span-2">
+            <dt className="eyebrow">{t.projects.tech}</dt>
+            <dd className="mt-3 flex flex-wrap gap-2">
+              {project.stack.map((s) => (
+                <TechBadge key={s}>{s}</TechBadge>
+              ))}
+            </dd>
+          </div>
+        </dl>
+        <div className="flex flex-wrap gap-x-6 gap-y-3">
           <Link to={`/projects/${project.slug}`} className="inline-flex items-center gap-1.5 font-medium">
             <span className="link-underline">{t.projects.details}</span>
             <ArrowUpRight className="size-4" aria-hidden="true" />
           </Link>
           {project.links.live && (
-            <a href={project.links.live} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-muted hover:text-fg">
+            <a
+              href={project.links.live}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 text-muted hover:text-fg"
+            >
               <span className="link-underline">{t.projects.view}</span>
               <ArrowUpRight className="size-4" aria-hidden="true" />
             </a>
           )}
           {project.links.github && (
-            <a href={project.links.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-muted hover:text-fg">
+            <a
+              href={project.links.github}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 text-muted hover:text-fg"
+            >
               <GithubIcon className="size-4" />
               <span className="link-underline">{t.projects.github}</span>
             </a>
           )}
         </div>
-      </dl>
+      </div>
     </Reveal>
   )
 }

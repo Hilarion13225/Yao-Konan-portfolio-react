@@ -57,6 +57,7 @@
 
     <!-- Applique le thème avant le premier rendu pour éviter un flash -->
     <script>
+      document.documentElement.dataset.js = ''
       try {
         var t = localStorage.getItem('portfolio-theme')
         if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t
